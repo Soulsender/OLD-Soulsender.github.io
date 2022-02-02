@@ -3,8 +3,7 @@
 My name is Soulsender
 
 ### Test python code
-```py
-
+```python
 x = 'Hello World'
 
 if x == 'Hello World':
@@ -12,5 +11,4 @@ if x == 'Hello World':
   
 else:
   print('Goodbye World')
-
 ```
