@@ -17,4 +17,17 @@ Replit being the user-friendly cloud IDE that it is, was confused when I tried t
 ```
 poetry add pycord
 ```
-This worked, but I still wanted to make sure it worked client-side as I like to edit the code on my local machine and then upload it to Replit.
+This worked, but I still wanted to make sure it worked client-side as I like to edit the code on my local machine and then upload it to Replit. I installed Poetry via a simple: (I was running Linux, not Windows)
+```
+curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python3 -
+poetry install --no-root
+```
+I was expecting it to work then. **Plot twist: it did not work**. I learned that I needed to initalize Poetry. I did with 
+```
+poetry install
+```
+And it STILL did not want to cooperate. After looking around and discussing with one of my friends that knows more about Poetry than I do, we discovered that the reason was because Poetry was not bound in my $PATH. I added the command:
+```
+export PATH="$PATH:/home/$USER/.poetry/bin"
+```
+to the end of my `.bashrc` file. This file is loaded whenever you launch a bash shell/terminal/command prompt. Now, this command will automatically be ran whenever I open a new session, and Poetry will be initalized and ready to go at a moment's notice!
