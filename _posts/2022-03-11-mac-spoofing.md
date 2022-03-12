@@ -47,3 +47,4 @@ I restarted the network manager daemon, and BOOM. I had internet again. Because 
 
 ### Conclusion
 
+I'll do this later lol
