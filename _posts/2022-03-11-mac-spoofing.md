@@ -37,7 +37,7 @@ Hm. Well random MAC addresses didn't work, and my static one was blocked. After 
 <br /><br />
 1) They only saw my device, which means they don't know who's actually behind the strange Linux device on their network. When you join the WiFi network at my school, you are required to put in you student credentials. This means they can directly link activity on a network to a certain student depending on who is signed in as that user on that device. 
 <br /><br />
-3) I could *steal* the MAC address of my phone and use that to get internet, because it was already registered on the network. 
+2) I could *steal* the MAC address of my phone and use that to get internet, because it was already registered on the network. 
 <br /><br />
 After copying and inputing my phone's MAC address into my laptop via
 ```
