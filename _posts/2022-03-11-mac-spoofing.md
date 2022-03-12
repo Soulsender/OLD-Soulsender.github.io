@@ -18,3 +18,8 @@ This didn't work either, and I tried one more thing. The MAC Address.
 MAC stands for Media Access Control address. Every device has a MAC address. A MAC address is used sort of like an IP address, but only on a local area network (LAN). A router on a network delivers traffic to a device with the correct MAC address. This is done through the ARP (Address Resolution Protocol) which you can sort of think of like the DNS for MAC addresses. A MAC address consists of six sets of two numbers or letters, seperated by a colon. Example: `9C:6A:BD:07:B7:92`
 <br /><br />
 Unlike IP addresses, MAC addresses are static and do not change (there are some exceptions but for the most part, they stay the same on all networks). A MAC address will have infomation about the vendor of the device. For instance, you might be able to tell that a device is an Apple or Dell product based on the MAC address.
+
+### Why is this Important to Know?
+Well, every device that connects to a WiFi network, via wireless or ethernet, will give that network it's MAC address. This way, the network knows who to give requested traffic to. There are ways to SPOOF MAC addresses however, and that's the important part of this story. MAC spoofing is possible on pretty much all operating systems, even iPhones have a built in way to use a seperate MAC address than the real one. This is important to note.
+<br /><br />
+To be clear - I had no ill-intent during my discovery of this process. It's not illegal, and is perfectly fine to do. After my discovery of my laptop's MAC address being blocked, I had the idea to generate a new, random address for my laptop. 
