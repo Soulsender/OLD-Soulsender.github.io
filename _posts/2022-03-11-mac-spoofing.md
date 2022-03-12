@@ -23,3 +23,10 @@ Unlike IP addresses, MAC addresses are static and do not change (there are some 
 Well, every device that connects to a WiFi network, via wireless or ethernet, will give that network it's MAC address. This way, the network knows who to give requested traffic to. There are ways to SPOOF MAC addresses however, and that's the important part of this story. MAC spoofing is possible on pretty much all operating systems, even iPhones have a built in way to use a seperate MAC address than the real one. This is important to note.
 <br /><br />
 To be clear - I had no ill-intent during my discovery of this process. It's not illegal, and is perfectly fine to do. After my discovery of my laptop's MAC address being blocked, I had the idea to generate a new, random address for my laptop. Using a very simple Linux command-line program called [`macchanger`](https://github.com/alobbs/macchanger), you can generate and use random MAC addresses. 
+<br /><br />
+So I used this program to generate a new and random address for my device. It's very easy to do:
+```
+sudo macchanger -r wlp59s0
+```
+`wlp59s0` is the name of my wireless card. Usually this can be listed as `wlan0` or something else. You can look this up via `iwconfig`. Using this randomly-generated MAC address worked for a full 15 minutes! ...and then I got blocked again. There was some sysadmin somewhere that was seeing me connect to this network, and probably thought it was a little suspisous that they were using a Linux distrobution for one of two reasons. 1) No normal person uses Linux, especially not a student at a high-school. 2) Linux is very commonly used for hacking. I can't really blame them for wanting to try to block me ¯\_(ツ)_/¯.
+<br /><br />
