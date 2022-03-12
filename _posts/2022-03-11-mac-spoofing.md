@@ -28,5 +28,5 @@ So I used this program to generate a new and random address for my device. It's 
 ```
 sudo macchanger -r wlp59s0
 ```
-`wlp59s0` is the name of my wireless card. Usually this can be listed as `wlan0` or something else. You can look this up via `iwconfig`. Using this randomly-generated MAC address worked for a full 15 minutes! ...and then I got blocked again. There was some sysadmin somewhere that was seeing me connect to this network, and probably thought it was a little suspisous that they were using a Linux distrobution for one of two reasons. 1) No normal person uses Linux, especially not a student at a high-school. 2) Linux is very commonly used for hacking. I can't really blame them for wanting to try to block me ¯\_(ツ)_/¯.
+`wlp59s0` is the name of my wireless card. Usually this can be listed as `wlan0` or something else. You can look this up via `iwconfig`. Using this randomly-generated MAC address worked for a full 15 minutes! ...and then I got blocked again. There was some sysadmin somewhere that was seeing me connect to this network, and probably thought it was a little suspisous that they were using a Linux distrobution for one of two reasons. 1) No normal person uses Linux, especially not a student at a high-school. 2) Linux is very commonly used for hacking. I can't really blame them for wanting to try to block me ¯|_(ツ)_/¯.
 <br /><br />
