@@ -20,6 +20,7 @@ MAC stands for Media Access Control address. Every device has a MAC address. A M
 Unlike IP addresses, MAC addresses are static and do not change (there are some exceptions but for the most part, they stay the same on all networks). A MAC address will have infomation about the vendor of the device. For instance, you might be able to tell that a device is an Apple or Dell product based on the MAC address.
 
 ### Why is this Important to Know?
+
 Well, every device that connects to a WiFi network, via wireless or ethernet, will give that network it's MAC address. This way, the network knows who to give requested traffic to. There are ways to SPOOF MAC addresses however, and that's the important part of this story. MAC spoofing is possible on pretty much all operating systems, even iPhones have a built in way to use a seperate MAC address than the real one. This is important to note.
 <br /><br />
 To be clear - I had no ill-intent during my discovery of this process. It's not illegal, and is perfectly fine to do. After my discovery of my laptop's MAC address being blocked, I had the idea to generate a new, random address for my laptop. Using a very simple Linux command-line program called [`macchanger`](https://github.com/alobbs/macchanger), you can generate and use random MAC addresses. 
@@ -29,4 +30,9 @@ So I used this program to generate a new and random address for my device. It's 
 sudo macchanger -r wlp59s0
 ```
 `wlp59s0` is the name of my wireless card. Usually this can be listed as `wlan0` or something else. You can look this up via `iwconfig`. Using this randomly-generated MAC address worked for a full 15 minutes! ...and then I got blocked again. There was some sysadmin somewhere that was seeing me connect to this network, and probably thought it was a little suspisous that they were using a Linux distrobution for one of two reasons. 1) No normal person uses Linux, especially not a student at a high-school. 2) Linux is very commonly used for hacking. I can't really blame them for wanting to try to block me ¯|_(ツ)_/¯.
+
+### What Now?
+
+Hm. Well random MAC addresses didn't work, and my static one was blocked. After this, I tried using MAC addresses from different vendors, such as Apple and Cisco, but no bueno.
 <br /><br />
+Remember that thing earlier how iPhones have a built-in MAC changer thing? I thought about this, and I realised that my phone hadn't been kicked off the network. This meant two things. 1) They only saw my device, which means they don't know who's actually behind the strange Linux device on their network. When you join the WiFi network at my school, you are required to put in you student credentials. This means they can directly link activity on a network to a certain student depending on who is signed in as that user on that device. 
