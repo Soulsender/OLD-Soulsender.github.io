@@ -1,4 +1,4 @@
-### MAC Address Spoofing and How a System Admin got Outplayed by a 16 Year Old
+### MAC Address Spoofing and How a 16 Year Old Outplayed A System Admin
 
 Today, as per usual, I was at school. I was working normally when all of a sudden - internet was cut to my laptop. I run Linux as my desktop, and sometimes the network-manager does not initialize on boot. This is usually fine, I just need to restart the network daemon. This is a pretty simple and self-explanatory command:
 ```
@@ -33,6 +33,17 @@ sudo macchanger -r wlp59s0
 
 ### What Now?
 
-Hm. Well random MAC addresses didn't work, and my static one was blocked. After this, I tried using MAC addresses from different vendors, such as Apple and Cisco, but no bueno.
+Hm. Well random MAC addresses didn't work, and my static one was blocked. After this, I tried using MAC addresses from different vendors, such as Apple and Cisco, but no bueno. Remember that thing earlier how iPhones have a built-in MAC changer thing? I thought about this, and I realised that my phone hadn't been kicked off the network. This meant two things. 
 <br /><br />
-Remember that thing earlier how iPhones have a built-in MAC changer thing? I thought about this, and I realised that my phone hadn't been kicked off the network. This meant two things. 1) They only saw my device, which means they don't know who's actually behind the strange Linux device on their network. When you join the WiFi network at my school, you are required to put in you student credentials. This means they can directly link activity on a network to a certain student depending on who is signed in as that user on that device. 
+1) They only saw my device, which means they don't know who's actually behind the strange Linux device on their network. When you join the WiFi network at my school, you are required to put in you student credentials. This means they can directly link activity on a network to a certain student depending on who is signed in as that user on that device. 
+<br /><br />
+3) I could *steal* the MAC address of my phone and use that to get internet, because it was already registered on the network. 
+<br /><br />
+After copying and inputing my phone's MAC address into my laptop via
+```
+sudo macchanger -m (the phone's mac address) wlp59s0
+```
+I restarted the network manager daemon, and BOOM. I had internet again. Because my iPhone was already registered on the network BEFORE I started messing with my laptop's MAC, it would not look suspicious at all - they would have no way to know the owner of the MAC address had changed. To the network, it was my phone - when in reality, it was my laptop.
+
+### Conclusion
+
