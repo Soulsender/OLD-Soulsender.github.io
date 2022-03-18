@@ -1,4 +1,4 @@
-### MAC Address Spoofing and How a 16 Year Old Outplayed A System Admin
+### MAC Address Spoofing and Outplaying A System Admin
 
 Today, as per usual, I was at school. I was working normally when all of a sudden - internet was cut to my laptop. I run Linux as my desktop, and sometimes the network-manager does not initialize on boot. This is usually fine, I just need to restart the network daemon. This is a pretty simple and self-explanatory command:
 ```
