@@ -44,7 +44,3 @@ After copying and inputing my phone's MAC address into my laptop via
 sudo macchanger -m (the phone's mac address) wlp59s0
 ```
 I restarted the network manager daemon, and BOOM. I had internet again. Because my iPhone was already registered on the network BEFORE I started messing with my laptop's MAC, it would not look suspicious at all - they would have no way to know the owner of the MAC address had changed. To the network, it was my phone - when in reality, it was my laptop.
-
-### Conclusion
-
-I'll do this later lol
