@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+
+    <!--- basic page needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <title>Soulsender.github.io</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/vendor.css">
+
+    <!-- script
+    ================================================== -->
+    <script src="js/modernizr.js"></script>
+    <script defer src="js/fontawesome/all.min.js"></script>
+
+    <!-- favicons
+    ================================================== -->
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+
+</head>
+
+<body id="top">
+
+
+    <!-- preloader
+    ================================================== -->
+    <div id="preloader">
+        <div id="loader"></div>
+    </div>
+
+
+    <!-- header
+    ================================================== -->
+    <header class="s-header">
+        <div class="row">
+
+            <nav class="s-header__nav">
+                <ul>
+                    <li class="current"><a class="smoothscroll" href="#home">Home</a></li>
+                    <li><a class="smoothscroll" href="#services">About Me</a></li>
+                    <li><a class="smoothscroll" href="#blog">Blog</a></li>
+                    <li><a class="smoothscroll" href="#links">Links</a></li>
+                </ul>
+            </nav>
+
+            <a class="s-header__menu-toggle" href="#0" title="Menu">
+                <span class="s-header__menu-icon"></span>
+            </a>
+
+        </div> <!-- end row -->
+    </header> <!-- end s-header -->
+
+
+    <!-- home
+    ================================================== -->
+    <section id="home" class="s-home target-section" data-parallax="scroll" data-image-src="images/2mn8bo9krcx71.png" data-natural-width="3000" data-natural-height="2000">
+
+        <div class="s-home__content">
+
+            <div class="s-home__slider">
+
+                <div class="s-home__slide s-home__slide--1">
+                    <style>
+                        #container {
+                            text-align: center;
+                        }
+
+                        #text {
+                            display: inline-block;
+                            vertical-align: middle;
+                            color: hsla(182, 82%, 68%, 1);
+                            letter-spacing: 2px;
+                        }
+
+                        #cursor {
+                            display: inline-block;
+                            vertical-align: middle;
+                            width: 3px;
+                            height: 50px;
+                            background-color: hsla(182, 82%, 68%, 1);
+                            animation: blink .75s step-end infinite;
+                        }
+
+                        @keyframes blink {
+                            from, to { 
+                                background-color: transparent 
+                            }
+                            50% { 
+                                background-color: hsla(182, 82%, 68%, 1); 
+                            }
+                        }
+
+                    </style>
+
+                    <div class="row">
+                        <div class="column large-12 s-home__slide-text">
+                            <h2>
+                            Hello, I'm 
+                            <div id="container">
+                                <div id="text"></div><div id="cursor"></div>
+                            </div>
+                            </h2>
+                            <p>
+                                I'm a Canadian student studying computer science and cybersecurity.
+                                I'm a passionate Linux user, known for my custom desktops. I most commonly use Debian-based operating systems - for my daily desktop use, and in cloud-based SoHo servers of my own design.
+                            </p>
+                        </div>
+                    </div>
+                </div> <!-- end s-home__slide -->
+
+                <div class="s-home__slide s-home__slide--2">
+                    <div class="row">
+                        <div class="column large-12 s-home__slider-text">
+                            <h2>
+                            See some of <a href="#portfolio" title="">our works</a> or 
+                            <a href="#contact" title="">get in
+                            touch</a> to discuss how we could help you.
+                            </h2>
+                            <p>
+                            Expedita tempora nostrum. Quidem sit consequatur. Inventore 
+                            aut ut necessitatibus. Corporis suscipit quis consequatur aut 
+                            aliquid vitae et architecto nam.
+                            </p>
+                        </div>
+                    </div>
+                </div> <!-- end s-home__slide -->
+
+            </div> <!-- end s-home__slider -->
+
+        </div> <!-- end s-home__content -->
+
+        <div class="s-home__nav-arrows">
+            <div class="s-home__arrow-prev">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12.707 17.293L8.414 13H18v-2H8.414l4.293-4.293-1.414-1.414L4.586 12l6.707 6.707z"/></svg>
+            </div>
+            <div class="s-home__arrow-next">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M11.293 17.293l1.414 1.414L19.414 12l-6.707-6.707-1.414 1.414L15.586 11H6v2h9.586z"/></svg>
+            </div>
+        </div> <!-- end s-home__nav-arrows -->
+
+        <div class="s-home__line"></div>
+
+    </section> <!-- end s-home -->
+
+
+    <!-- services
+    ================================================== -->
+    <section id="services" class="s-services target-section s-dark">
+
+        <div class="row section-head">
+            <div class="column large-3 medium-12" data-aos="fade-up">
+                <h2>What do I do?</h2>
+                <p class="desc">A multiude of things.</p>
+            </div>
+
+            <div class="column large-8 medium-12 align-x-right" data-aos="fade-up">
+                <p class="lead">
+                I'm always learning new things, so I don't specilize in one area in particular. I hope to one day be an expert and have advanced knowledge of computers and cybersecurity.
+                </p>
+            </div>
+        </div> <!-- end section-head -->
+
+        <div class="row block-large-1-3 block-medium-1-2 block-tab-full services-list">
+
+            <div class="column services-item" data-aos="fade-up">
+                <h5>Programming</h5>
+                <p>
+                I make programming projects such as automated bots, and applications. I've learned to use API documentation for things like Discord, as well as have done some rudimentary website development. 
+                </p>
+            </div> <!-- end services-item -->
+
+            <div class="column services-item" data-aos="fade-up">
+                <h5>Computer Science</h5>
+                <p>
+                I love to see the inner workings of computers, and I use Linux operating systems on a daily basis. I am comfortable in the terminal, being able to edit firewall permissions, create VPN servers, remotely SSH into said servers, and manage desktop enviroments.
+                </p>
+            </div> <!-- end services-item -->
+
+            <div class="column services-item" data-aos="fade-up">
+                <h5>Hacking</h5>
+                <p>
+                Along with my ever-growing knowledge of Linux operating systems, I compete in Capture the Flag (CTFs) hacking competitions, where hackers compete to breach and steal a flag from a machine. CTFs can be divided into different types of hacks, such as web, cryptography, forensics, reverse engineering, and even more!
+                </p>
+            </div> <!-- end services-item -->
+
+        </div> <!-- end services-list -->
+
+    </section> <!-- end s-services -->
+
+        <!-- Modal Popup
+        =========================================================== -->
+        <div id="modal-01" class="modal-popup lity-hide">
+
+            <img src="images/portfolio/gallery/g-droplet.jpg" alt="" />
+
+            <div class="modal-popup__desc">
+                <h5>Droplet</h5>
+                <p>Odio soluta enim quos sit asperiores rerum rerum repudiandae cum. Vel voluptatem alias qui assumenda iure et expedita voluptatem. Ratione officiis quae.</p>
+                <ul class="modal-popup__cat">
+                    <li>Branding</li>
+                    <li>Product Design</li>
+                </ul>
+            </div>
+
+            <a href="https://www.behance.net/" class="modal-popup__details">Project link</a>
+
+        </div> <!-- end modal-01 -->
+
+        <div id="modal-02" class="modal-popup lity-hide">
+
+            <img src="images/portfolio/gallery/g-lamp.jpg" alt="" />
+
+            <div class="modal-popup__desc">
+                <h5>The Lamp</h5>
+                <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit.</p>
+                <ul class="modal-popup__cat">
+                    <li>Branding</li>
+                </ul>
+            </div>
+
+            <a href="https://www.behance.net/" class="modal-popup__details">Project link</a>
+
+        </div><!-- end modal-02 -->
+
+        <div id="modal-03" class="modal-popup lity-hide">
+
+            <img src="images/portfolio/gallery/g-minimalismo.jpg" alt="" />
+
+            <div class="modal-popup__desc">
+                <h5>Minimalismo</h5>
+                <p>Exercitationem reprehenderit quod explicabo consequatur aliquid ut magni ut. Deleniti quo corrupti illum velit eveniet ratione necessitatibus ipsam mollitia.</p>
+                <ul class="modal-popup__cat">
+                    <li>Product Design</li>
+                </ul>
+            </div>
+
+            <a href="https://www.behance.net/" class="modal-popup__details">Project link</a>
+
+        </div><!-- end modal-03 -->
+
+        <div id="modal-04" class="modal-popup lity-hide">
+
+            <img src="images/portfolio/gallery/g-shutterbug.jpg" alt="" />
+
+            <div class="modal-popup__desc">
+                <h5>Shutterbug</h5>
+                <p>Dolores velit qui quos nobis. Aliquam delectus voluptas quos possimus non voluptatem voluptas voluptas. Est doloribus eligendi porro doloribus voluptatum.</p>
+                <ul class="modal-popup__cat">
+                    <li>E-Commerce</li>
+                </ul>
+            </div>
+
+            <a href="https://www.behance.net/" class="modal-popup__details">Project link</a>
+
+        </div><!-- end modal-04 -->
+
+        <div id="modal-05" class="modal-popup lity-hide">
+
+            <img src="images/portfolio/gallery/g-fuji.jpg" alt="" />
+
+            <div class="modal-popup__desc">
+                <h5>Fuji</h5>
+                <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit.</p>
+                <ul class="modal-popup__cat">
+                    <li>Product Design</li>
+                </ul>
+            </div>
+
+            <a href="https://www.behance.net/" class="modal-popup__details">Project link</a>
+
+        </div><!-- end modal-05 -->
+
+        <div id="modal-06" class="modal-popup lity-hide">
+
+            <img src="images/portfolio/gallery/g-skaterboy.jpg" alt="" />
+
+            <div class="modal-popup__desc">
+                <h5>Skaterboy</h5>
+                <p>Quisquam vel libero consequuntur autem voluptas. Qui aut vero. Omnis fugit mollitia cupiditate voluptas. Aenean sollicitudin, lorem quis bibendum auctor.</p>
+                <ul class="modal-popup__cat">
+                    <li>Branding</li>
+                    <li>Product Design</li>
+                </ul>
+            </div>
+
+            <a href="https://www.behance.net/" class="modal-popup__details">Project link</a>
+
+        </div><!-- end modal-06 -->
+
+    </section> <!-- end s-portfolio -->
+
+
+    <!-- blog
+    ================================================== -->
+    <section id="blog" class="s-blog target-section s-dark">
+
+        <div class="row section-head">
+            <div class="column large-3 medium-12" data-aos="fade-up">
+                <h2>Blog</h2>
+                <p class="desc">Past projects and expirements.</p>
+            </div>
+        </div> <!-- end section-head -->
+
+        <!-- Blog Entries -->
+        <div class="blog-entries">
+
+            <article class="blog-entry" data-aos="fade-up">
+
+                <div class="row blog-entry__header">
+                    
+
+                    <div class="column large-9 w-1000-stack blog-entry__title">
+                        <h3 class="h2"><a href="blog/mac-spoofing.html">Mac Spoofing and Outplaying a System Admin</a></h3>
+                    </div>
+
+                    <div class="column large-3 w-1000-stack blog-entry__meta">
+                        <span class="blog-entry__date">March 11, 2022</span>
+                    </div>
+                </div> <!-- end blog-entry__header -->
+
+                <div class="row">
+
+                    <div class="column large-9 w-1000-stack blog-entry__content">
+                        <p>
+                        Adipisci quisquam quasi et voluptatem explicabo. Laudantium omnis est 
+                        impedit explicabo nulla nemo voluptatem. Quidem neque et et repellendus quos.
+                        Soluta voluptas at sunt dolor qui voluptas facere sed laudantium. Fuga molestias at. 
+                        Deserunt blanditiis maxime ut qui sunt. Dignissimos ea voluptas alias omnis voluptates.
+                    </div>
+
+                </div>
+
+            </article> <!-- end blog-entry -->
+
+        </div> <!-- end blog entries -->
+
+    </section> <!-- end s-blog -->
+
+
+    <!-- links
+    ================================================== -->
+    <section id="links" class="s-about target-section">
+
+        <div class="row section-head">
+            <div class="column large-3 medium-12" data-aos="fade-up">
+                <h2>About Us</h2>
+                <p class="desc">This is what we are.</p>
+            </div>
+
+            <div class="column large-8 medium-12 align-x-right" data-aos="fade-up">
+                <p class="lead">
+                At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis 
+                praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias 
+                excepturi sint occaecati cupiditate. At vero eos et accusamus et iusto odio 
+                dignissimos ducimus qui blanditiis praesentium.
+                </p>
+            </div>
+        </div> <!-- end section-head -->
+
+        <div class="row">
+            <div class="column" data-aos="fade-up">
+                <h4>Our Work Process.</h4>
+            </div>
+        </div>
+
+        <div class="row block-large-1-4 block-medium-1-2 block-mob-full process-block">
+
+            <div class="column process" data-aos="fade-up">
+                <h6>Explore.</h6>
+    
+                <p>
+                Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor,
+                nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate
+                cursus a sit amet mauris. Morbi accumsan ipsum velit.
+                </p>
+            </div>
+   
+            <div class="column process" data-aos="fade-up">
+               <h6>Design.</h6>
+   
+                <p>
+                Aliquam cum molestiae quia eos consequatur qui. Tempora sit doloribus dolores iure quod quasi 
+                totam eum eos. Nulla non sunt eum in itaque qui non sit exercitationem. Sunt sed quasi nobis 
+                quaerat dolor et ad. Sagittis sem nibh id elit. Debitis consequuntur quasi fugit.
+                </p>
+            </div>
+   
+            <div class="column process" data-aos="fade-up">
+                <h6>Develop.</h6>
+   
+                <p>
+                Voluptatem error perspiciatis fugit libero nemo. Repudiandae consequatur qui et quidem dolorem 
+                necessitatibus necessitatibus voluptatibus. Debitis consequuntur quasi fugit sapiente. Odit odio laboriosam 
+                vitae dolores molestias. Est consectetur et.
+                </p>
+            </div>
+   
+            <div class="column process" data-aos="fade-up">
+                <h6>Deliver.</h6>
+    
+                <p>
+                Earum a sit placeat nostrum dolorum. Ut qui autem omnis magni. Dignissimos quasi molestiae tenetur ipsa 
+                voluptatum similique iste illo nulla. Ut sunt maiores dolorem recusandae ea. Corporis aperiam repellat quaerat 
+                et ab dolores est fuga non.
+                </p>
+            </div>
+   
+         </div> <!-- end process-block -->
+
+         <div class="row">
+            <div class="column" data-aos="fade-up">
+                <h4>Meet The Team.</h4>
+            </div>
+        </div>
+
+        <div class="row block-large-1-4 block-medium-1-3 block-tab-1-2 block-500-stack team-block">
+
+            <div class="column team-member" data-aos="fade-up">
+                <div class="team-member__pic">
+                    <img src="images/team/team-member-01.jpg" 
+                         srcset="images/team/team-member-01.jpg 1x, 
+                                 images/team/team-member-01@2x.jpg 2x" alt="">
+                </div>
+                <div class="team-member__info">
+                    <p class="team-member__name">
+                        Naruto Uzumaki
+                        <span>Project Manager</span>
+                    </p>
+                    <ul class="team-member__social">
+                        <li><a href="#0"><i class="fab fa-facebook-f" aria-hidden="true"></i></a></li>
+                        <li><a href="#0"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>
+                        <li><a href="#0"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
+                        <li><a href="#0"><i class="fab fa-dribbble" aria-hidden="true"></i></a></li>
+                        <li><a href="#0"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="column team-member" data-aos="fade-up">
+                <div class="team-member__pic">
+                    <img src="images/team/team-member-02.jpg" 
+                         srcset="images/team/team-member-02.jpg 1x, 
+                                 images/team/team-member-02@2x.jpg 2x" alt="">
+                </div>
+                <div class="team-member__info">
+                    <p class="team-member__name">
+                        Sakura Haruno
+                        <span>Design Researcher</span>
+                    </p>
+                    <ul class="team-member__social">
+                        <li><a href="#0"><i class="fab fa-facebook-f" aria-hidden="true"></i></a></li>
+                        <li><a href="#0"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>
+                        <li><a href="#0"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
+                        <li><a href="#0"><i class="fab fa-dribbble" aria-hidden="true"></i></a></li>
+                        <li><a href="#0"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="column team-member" data-aos="fade-up">
+                <div class="team-member__pic">
+                    <img src="images/team/team-member-03.jpg" 
+                         srcset="images/team/team-member-03.jpg 1x, 
+                                 images/team/team-member-03@2x.jpg 2x" alt="">
+                </div>
+                <div class="team-member__info">
+                    <p class="team-member__name">
+                        Kakashi Hatake
+                        <span>UI/UX Designer</span>
+                    </p>
+                    <ul class="team-member__social">
+                        <li><a href="#0"><i class="fab fa-facebook-f" aria-hidden="true"></i></a></li>
+                        <li><a href="#0"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>
+                        <li><a href="#0"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
+                        <li><a href="#0"><i class="fab fa-dribbble" aria-hidden="true"></i></a></li>
+                        <li><a href="#0"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="column team-member" data-aos="fade-up">
+                <div class="team-member__pic">
+                    <img src="images/team/team-member-04.jpg" 
+                         srcset="images/team/team-member-04.jpg 1x, 
+                                 images/team/team-member-04@2x.jpg 2x" alt="">
+                </div>
+                <div class="team-member__info">
+                    <p class="team-member__name">
+                        Shikamaru Nara
+                        <span>Front-End Developer</span>
+                    </p>
+                    <ul class="team-member__social">
+                        <li><a href="#0"><i class="fab fa-facebook-f" aria-hidden="true"></i></a></li>
+                        <li><a href="#0"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>
+                        <li><a href="#0"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
+                        <li><a href="#0"><i class="fab fa-dribbble" aria-hidden="true"></i></a></li>
+                        <li><a href="#0"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+
+        </div> <!-- end team-block -->
+
+    </section> <!-- end s-about -->
+
+    <!-- footer
+    ================================================== -->
+    <footer class="s-footer">
+        <div class="row">
+            
+
+            <div class="column large-7 medium-6 w-1000-stack ss-copyright">
+                <span>© Copyright Kreative 2020</span> 
+                <span>Design by <a href="https://www.styleshout.com/">StyleShout</a></span>
+            </div>
+        </div>
+
+        <div class="ss-go-top">
+            <a class="smoothscroll" title="Back to Top" href="#top">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 4h12v2H6zm5 10v6h2v-6h5l-6-6-6 6z"/></svg>
+            </a>
+        </div> <!-- end ss-go-top -->
+    </footer>
+
+    <!-- Java Script
+    ================================================== -->
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/main.js"></script>
+
+</body>
+
+</html>
