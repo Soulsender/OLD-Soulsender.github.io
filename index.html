@@ -50,9 +50,10 @@
             <nav class="s-header__nav">
                 <ul>
                     <li class="current"><a class="smoothscroll" href="#home">Home</a></li>
-                    <li><a class="smoothscroll" href="#services">About Me</a></li>
-                    <li><a class="smoothscroll" href="#blog">Blog</a></li>
+                    <li><a class="smoothscroll" href="#about">About Me</a></li>
+                    <li><a class="smoothscroll" href="#saints">SAINTS</a></li>
                     <li><a class="smoothscroll" href="#links">Links</a></li>
+                    <li><a class="smoothscroll" href="#blog">Blog</a></li>
                 </ul>
             </nav>
 
@@ -130,7 +131,7 @@
 
     <!-- services
     ================================================== -->
-    <section id="services" class="s-services target-section s-dark">
+    <section id="about" class="s-services target-section s-dark">
 
         <div class="row section-head">
             <div class="column large-3 medium-12" data-aos="fade-up">
@@ -173,47 +174,67 @@
     </section> <!-- end s-services -->
 
     
-       
-
-
-    <!-- blog
+    <!-- saints
     ================================================== -->
-    <section id="blog" class="s-blog target-section s-dark">
+    <section id="saints" class="s-blog target-section s-dark">
+
+        <style>
+            #saints {
+                background-color: rgba(255, 0, 0, 0.603);
+            }
+
+        </style>
 
         <div class="row section-head">
             <div class="column large-3 medium-12" data-aos="fade-up">
-                <h2>Blog</h2>
-                <p class="desc">Past project write-ups.</p>
+                <h2><a href="https://www.saintssec.com/"></a>The Saints</a></h2>
+                <p class="desc">My CTF team.</p>
             </div>
+            
+           
+
         </div> <!-- end section-head -->
 
-        <!-- Blog Entries -->
-        <div class="blog-entries">
+            <!-- Blog Entries -->
+            <div class="blog-entries">
 
-            <article class="blog-entry" data-aos="fade-up">
+                <article class="blog-entry" data-aos="fade-up">
 
-                <div class="row blog-entry__header">
+                    <div class="row blog-entry__header">
 
-                    <div class="column large-9 w-1000-stack blog-entry__title">
-                        <h3 class="h2"><a href="blog/mac-spoofing.html">Mac Spoofing and Outplaying a System Admin</a></h3>
+                        <div class="column large-9 w-1000-stack blog-entry__title">
+                            <h3 class="h2"><a href="https://www.saintssec.com/the-team">The Team</a></h3>
+                        </div>
+                        
+                        <div class="column large-9 w-1000-stack blog-entry__title">
+                            <a class="twitter-timeline"
+                            href="https://twitter.com/ItsTheSaints"
+                            data-tweet-limit="1">
+                            @ItsTheSaints
+                            </a>
+                            <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>                        </div>
+
+                        
+                    </div> <!-- end blog-entry__header -->
+
+                    <div class="row">
+
+                        
+
                     </div>
 
-                    <div class="column large-3 w-1000-stack blog-entry__meta">
-                        <span class="blog-entry__date">March 11, 2022</span>
-                    </div>
-                </div> <!-- end blog-entry__header -->
+                </article> <!-- end blog-entry -->
 
-                <div class="row">
+            </div> <!-- end blog entries -->
 
-                    
 
-                </div>
+        
 
-            </article> <!-- end blog-entry -->
+        
+    </section> <!-- end s-blog -->   
 
-        </div> <!-- end blog entries -->
 
-    </section> <!-- end s-blog -->
+    
 
     <!-- links
     ================================================== -->
@@ -276,6 +297,46 @@
         
 
     </section> <!-- end s-links -->
+
+
+    <!-- blog
+    ================================================== -->
+    <section id="blog" class="s-blog target-section s-dark">
+
+        <div class="row section-head">
+            <div class="column large-3 medium-12" data-aos="fade-up">
+                <h2>Blog</h2>
+                <p class="desc">Past project write-ups.</p>
+            </div>
+        </div> <!-- end section-head -->
+
+        <!-- Blog Entries -->
+        <div class="blog-entries">
+
+            <article class="blog-entry" data-aos="fade-up">
+
+                <div class="row blog-entry__header">
+
+                    <div class="column large-9 w-1000-stack blog-entry__title">
+                        <h3 class="h2"><a href="blog/mac-spoofing.html">Mac Spoofing and Outplaying a System Admin</a></h3>
+                    </div>
+
+                    <div class="column large-3 w-1000-stack blog-entry__meta">
+                        <span class="blog-entry__date">March 11, 2022</span>
+                    </div>
+                </div> <!-- end blog-entry__header -->
+
+                <div class="row">
+
+                    
+
+                </div>
+
+            </article> <!-- end blog-entry -->
+
+        </div> <!-- end blog entries -->
+
+    </section> <!-- end s-blog -->
 
     <!-- footer
     ================================================== -->
