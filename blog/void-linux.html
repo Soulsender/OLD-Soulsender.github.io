@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+
+    <!--- basic page needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <title>Entering the Void - Soulsender</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/vendor.css">
+
+    <!-- script
+    ================================================== -->
+    <script src="js/modernizr.js"></script>
+    <script defer src="js/fontawesome/all.min.js"></script>
+
+    <!-- favicons
+    ================================================== -->
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+
+</head>
+
+<body id="top">
+
+
+    <!-- preloader
+    ================================================== -->
+    <div id="preloader">
+        <div id="loader"></div>
+    </div>
+
+
+    <!-- header
+    ================================================== -->
+    <header class="s-header s-header--blog">
+        <div class="row">
+
+            <div class="s-header__logo">
+                <a href="index.html">
+                    
+                </a>
+            </div>
+
+            <nav class="s-header__nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li class="current"><a href="">Blog</a></li>
+                </ul>
+            </nav>
+
+            <a class="s-header__menu-toggle" href="#0" title="Menu">
+                <span class="s-header__menu-icon"></span>
+            </a>
+
+            
+
+        </div> <!-- end row -->
+    </header> <!-- end s-header -->
+
+
+    <!-- blog content
+    ================================================== -->
+    <div class="blog-content">
+
+        <div class="row blog-post-wrap">
+            <div class="column large-12">
+
+                <article class="blog-post">
+
+                    <div class="blog-post__header">
+                        <h1 class="blog-post__title">Entering the Void - My Experience Installing Void Linux</h1>
+                        
+                        <div class="blog-post__meta">
+
+                            <div class="blog-post__date">May 29, 2022</div>
+          
+                            
+          
+                        </div>
+                    </div> <!-- blog-post__header -->
+
+                    <div class="blog-post__content">
+
+                        <p class="lead drop-cap">
+                            Void Linux - a pretty niche linux distro. 
+                        </p>
+
+                        <p>
+                            Void Linux is a BSD type linux distro. I was intriged by it's smaller userbase, and the fact that I've never tried a BSD orientated distro before. It's different from other distros by a couple things:
+                        </p>
+
+                        <ul>
+                            <li>1. runit - runit is a different init system from systemd. It's more modern, faster, and effective than systemd. This makes Void even more minimal than Arch, as runit has significantly less code than systemd!</li>
+                            <li> 2. xbps - xbps (X Binary Package Sytem) is the Void package manager. It's extremely fast, and is generally regarded as a very good package manager. It takes a bit of configuring, as the default mirror is all the way in Germany (spolier alert: I'm not German). It does lack some more proprietary packages, where is when <a src="https://github.com/void-linux/void-packages">xbps-src</a> comes in, as an extension of xbps-install. You also have third-party tools like <a src="https://github.com/toluschr/xdeb">xdeb</a> to install Debian .deb packages which is very nice.</li>
+                            <li> 3. muscl - muscl is also available to be used, and is a nice addition and option instead of glibc, though I didn't use it so I wouldn't have to deal with programs not working from it. </li>
+                        </ul>
+
+                        <h3>Benefits and Drawbacks of Void</h3>
+
+                        <p>Aside from having a cool name, what is Void used for?</p>
+
+                        <h3>The Installation</h3>
+
+                        <p>
+                            I decided to go with the base iso to get the true Minimalist Experience (TM). I had practiced installing and setting up KDE Plasma in a virtual machine, so I knew what I had to do - in theory anyways. After flashing the iso to a dirve using Rufus (I had some issues with DD on linux), I booted to the live envrioment, and the welcoming arms of tty1. Void has a nice terminal-gui installer. It runs in a tty, but isn't a real graphical interface.                               
+                        </p>
+
+                        <code>
+                            void-installer
+                        </code>
+    
+                        <p>
+                            <br>
+                            After going through the typical setup, locale, users, etc., I got to the first issue.
+                        </p>
+
+                        <h3>The First Issue - Failed GRUB Installation</h3>
+    
+                        <p>
+                            During the installation (which is incredibly fast by the way), I was prompted that the system was unable to set up GRUB. GRUB being the typical Linux bootloader, is nessesary to boot the system, and you can't use the OS without it or some other bootloader. I tried once more before troubleshooting. 
+                            <br>
+                            I eventually figured out that it was an issue with booting the actual live system. My computer uses UEFI to boot, and I did not create the live image with that in mind. Using Rufus again, I set the partition tables to MBR, as well as double-checked which partition /boot/efi was being mounted to.
+                        </p>
+
+                        <h3>The Second Issue - No Permissions In My Own Home Directory</h3>
+    
+                        <p>
+                            After finishing the installation, I booted to my beautiful new shiny system... with no graphical interface. Now I ain't a noob, I had seperated my /home partition from the rest of the system so I could keep my config files as well as all the rest of my stuff instead of wiping it during the install. The only issue now, was that I couldn't access it from my new soul user. After accidentally messing with the permissions of / the root of the filesystem, (very bad idea, never do this) and doing a quick reinstall, I started messing with the permissions of my new user.
+                            
+                        </p>
+
+                        <code>
+                            chmod 755 /home/soul
+                        </code>
+
+                        <p>
+                            <br>
+                            This command would fix the permissions that my user had on it's own home directory, and give it read/write access. I assume that this was an issue because I had used this home directory on my other OS. Maybe the system thought that the directory was owned by the root user - I'm not sure. 
+                        </p>
+
+                        <h3>The Third Issue - .Xauthority</h3>
+
+                        <p>
+                            After dealing with the home directory fiasco, I wanted to get my graphical envrioment set up - as much as I like looking at black and white text. This is something I had already tried in a VM, and wasn't too hard to do. The <a src="https://docs.voidlinux.org/config/graphical-session/xorg.html">documentation</a> helped a lot here. Basically, you have to install Plasma, the Plasma baseapps, as well as Xorg which is the compositor using:
+                        </p>
+
+                        <code>
+                            sudo xbps-install kde5 kde5-baseapps xorg
+                        </code>
+
+                        <p>
+                            <br>
+                            CHECK YOUR MIRRORS BEFORE YOU DO THIS. This took FOREVER to install with the Germany mirrors - fortunately it gave me a lot of time to think about why I was doing this in the first place, and why I was making my life so hard. I settled on ego as my answer, as well as a faster boot time.
+                            <br>
+                            The documentation just says to add the dbus, sddm (optional), and xorg daemon to the startup which was pretty easy, and to write the execution to the .xinitrc in your user home directory. The last line is just starting the enviroment.
+                        </p>
+                        
+                        <code>
+                            ln -s /etc/sv/dbus /var/service
+                            ln -s /etc/sv/xorg /var/service
+                            ln -s /etc/sv/sddm /var/service
+
+                            echo "exec /bin/startplasma-x11" > ~/.xinitrc
+
+                            startx
+                        </code>
+
+                        <p>
+                            <br>
+                            However, when I ran startx, I would get an error stopping me. It told me that it could not lock the .Xauthority file in my home directory. After a couple google searches, I found out that this file basically uses some cookies to log you in to your desktop enviroment. This is important, and I couldn't launch my nice GUI until I fixed it. I went through a LOT of forums for this. They basically all told me to check the permisisons which I did (same chmod 755 command as earlier). I even deleted some lock files that I knew nothing about! JK, I did do a quick google search about them.
+                            <br>
+                            Then I cam across the gold command:
+                        </p>
+
+                        <code>
+                            sudo chmod u+w soul .Xauthority
+                        </code>
+
+                        <p>
+                            <br>
+                            This command would give my user the correct permissions to read and write to the file. I had my desktop enviroment, and was out of the tty!
+                        </p>
+
+                        <h3>What did I learn?</h3>
+
+                        <p>I learned many things trying to setup Void. I would not recommend Void to anyone but a hobbist such as myself, as it takes some time to get setup (although this also may have been me, not Void). </p>
+
+                    </div> <!-- end blog-post__content -->
+
+                </article> <!-- blog post -->
+
+
+    <!-- Java Script
+    ================================================== -->
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/main.js"></script>
+
+</body>
+
+</html>
