@@ -101,15 +101,16 @@
                             Void Linux is a BSD type linux distro. I was intriged by it's smaller userbase, and the fact that I've never tried a BSD orientated distro before. It's different from other distros by a couple things:
                         </p>
 
+                        <h3>Benefits and Drawbacks of Void</h3>
+
+                        <p>Aside from having a cool name, what is Void used for? Well it has a couple of quirks:</p>
+
                         <ul>
                             <li>1. runit - runit is a different init system from systemd. It's more modern, faster, and effective than systemd. This makes Void even more minimal than Arch, as runit has significantly less code than systemd!</li>
-                            <li> 2. xbps - xbps (X Binary Package Sytem) is the Void package manager. It's extremely fast, and is generally regarded as a very good package manager. It takes a bit of configuring, as the default mirror is all the way in Germany (spolier alert: I'm not German). It does lack some more proprietary packages, where is when <a src="https://github.com/void-linux/void-packages">xbps-src</a> comes in, as an extension of xbps-install. You also have third-party tools like <a src="https://github.com/toluschr/xdeb">xdeb</a> to install Debian .deb packages which is very nice.</li>
+                            <li> 2. xbps - xbps (X Binary Package Sytem) is the Void package manager. It's extremely fast, and is generally regarded as a very good package manager. It takes a bit of configuring, as the default mirror is all the way in Germany (spolier alert: I'm not German). It does lack some more proprietary packages, where is when <a href="https://github.com/void-linux/void-packages">xbps-src</a> comes in, as an extension of xbps-install. You also have third-party tools like <a href="https://github.com/toluschr/xdeb">xdeb</a> to install Debian .deb packages which is very nice.</li>
                             <li> 3. muscl - muscl is also available to be used, and is a nice addition and option instead of glibc, though I didn't use it so I wouldn't have to deal with programs not working from it. </li>
                         </ul>
 
-                        <h3>Benefits and Drawbacks of Void</h3>
-
-                        <p>Aside from having a cool name, what is Void used for?</p>
 
                         <h3>The Installation</h3>
 
@@ -153,7 +154,7 @@
                         <h3>The Third Issue - .Xauthority</h3>
 
                         <p>
-                            After dealing with the home directory fiasco, I wanted to get my graphical envrioment set up - as much as I like looking at black and white text. This is something I had already tried in a VM, and wasn't too hard to do. The <a src="https://docs.voidlinux.org/config/graphical-session/xorg.html">documentation</a> helped a lot here. Basically, you have to install Plasma, the Plasma baseapps, as well as Xorg which is the compositor using:
+                            After dealing with the home directory fiasco, I wanted to get my graphical envrioment set up - as much as I like looking at black and white text. This is something I had already tried in a VM, and wasn't too hard to do. The <a href="https://docs.voidlinux.org/config/graphical-session/xorg.html">documentation</a> helped a lot here. Basically, you have to install Plasma, the Plasma baseapps, as well as Xorg which is the compositor using:
                         </p>
 
                         <code>
@@ -169,14 +170,20 @@
                         
                         <code>
                             ln -s /etc/sv/dbus /var/service
+                        </code>
+                        <code>
                             ln -s /etc/sv/xorg /var/service
+                        </code>
+                        <code>
                             ln -s /etc/sv/sddm /var/service
-
+                        </code>    
+                        <code>
                             echo "exec /bin/startplasma-x11" > ~/.xinitrc
-
+                        </code>
+                        <code>
                             startx
                         </code>
-
+                        
                         <p>
                             <br>
                             However, when I ran startx, I would get an error stopping me. It told me that it could not lock the .Xauthority file in my home directory. After a couple google searches, I found out that this file basically uses some cookies to log you in to your desktop enviroment. This is important, and I couldn't launch my nice GUI until I fixed it. I went through a LOT of forums for this. They basically all told me to check the permisisons which I did (same chmod 755 command as earlier). I even deleted some lock files that I knew nothing about! JK, I did do a quick google search about them.
@@ -195,7 +202,7 @@
 
                         <h3>What did I learn?</h3>
 
-                        <p>I learned many things trying to setup Void. I would not recommend Void to anyone but a hobbist such as myself, as it takes some time to get setup (although this also may have been me, not Void). That being said, after it is set up, it is lightning-quick on boot, and runit is not very hard to use. </p>
+                        <p>I learned many things trying to setup Void. I would not recommend Void to anyone but a hobbist such as myself, as it takes some time to get setup (although this also may have been me, not Void). I feel that it is misclassified as "general-purpose" as you basically build the entire system youself. That being said, after it is set up, it is lightning-quick on boot, and runit is not very hard to use. </p>
 
                     </div> <!-- end blog-post__content -->
 
