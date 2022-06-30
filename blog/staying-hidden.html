@@ -93,15 +93,32 @@
                     <div class="blog-post__content">
 
                        <p class="lead drop-cap">
-                        Lots of people do not know how to be hidden online, so I made this simple guide on some easy-to-advanced measures you can take.
+                        Lots of people do not know how to be hidden online, so I made this simple guide on some easy-to-advanced measures you can take. 
                         </p>
 
-                        <p>I do not support illegal use of this infomation. Don't use this infomation for evil.</p>
+                        <p>I do not support illegal use of this infomation. That being said, <b>if you feel unsafe</b> this infomation is on my own website under <a href="https://soulsender.github.io">soulsender.github.io</a> which is not associated with any external websites. Nobody can directly see you are reading this article, they only know you are on my website.
+                            
+                            <br><br>
+                            
+                            Be wary that the <a class="smoothscroll" href="#domains">domain name</a> of any website is readable. For getting around this, see the <a class="smoothscroll" href="#vpns">VPN section</a> for minimal suspicion. 
+                            
+                            <br><br>
+
+                            <b>I encourage you to read the entire thing if you feel seriously threatened, as understanding these concepts will help you in your privacy, but I've inculded a TL;DR (Too Long, Didn't Read) at the end of the section as well.</b>
+                            
+                            <br><br>
+
+                            Don't use this infomation for evil. I'm doing my best to educate and help people.
+                        </p>
+
+                        <h2>Table Of Contents</h2>
+
 
                         <nav>
                             <ul>
                                 <li><a class="smoothscroll" href="#signal">Signal the Secure Messager App</a></li>
-                                <!-- <li><a class="smoothscroll" href="#vpns">Misinfomation about VPNs</a></li>
+                                <li><a class="smoothscroll" href="#vpns">VPNs and Misinfomation</a></li>
+                                <!-- <li><a class="smoothscroll" href="#domains">Domain Names</a></li>
                                 <li><a class="smoothscroll" href="#tor">The Dark Web (it's not dangerous) and Tor</a></li>
                                 <li><a class="smoothscroll" href="#physical">Physical Security</a></li> -->
                             </ul>
@@ -110,18 +127,60 @@
                         <h3 id="signal">Signal the Secure Messager App</h3>
     
                         <p>
-                            Unlike WhatsApp, Telegram, Instagram Messager, iMessage, etc., Signal is a open-source messaging app. This means that the code is available <a href="https://github.com/signalapp">for anyone to look at.</a> This means that it is more secure, and more private than other closed-source apps like the ones listed above. It cannot have secret hidden backdoors for the government to be listening in, because it is quite literally not written into the code of the app. Signal also uses End-2-End (E2E) encryption. Unlike other messager apps that use traditional encryption like Facebook and Apple, the messages you send only YOU and the recipient can see. This works because you are generated a special key (public and private versions) that you exchange with the recipient. This is actually quite an old process, and you can do it manually using something like <a href="https://gnupg.org/">GPG</a>, although this manual process won't be practical for daily use.
+                            Unlike WhatsApp, Telegram, Instagram Messager, iMessage, etc., Signal is a open-source messaging app. This means that the code is available <a href="https://github.com/signalapp">for anyone to look at.</a> This means that it is more secure, and more private than other closed-source apps like the ones listed above. It cannot have secret hidden backdoors for the government to be listening in, because it is quite literally not written into the code of the app. 
+                            <br><br>
+                            Signal also uses End-2-End (E2E) encryption. Unlike other messager apps that use traditional encryption like Facebook and Apple, the messages you send only YOU and the recipient can see. This works because you are generated a special key (public and private versions) that you exchange with the recipient. This is actually quite an old process, and you can do it manually using something like <a href="https://gnupg.org/">GPG</a>, although this manual process won't be practical for daily use.
 
-                            <br>
-                            <br>
+                            <br><br>
 
                             As is proven in <a href="https://signal.org/bigbrother/cd-california-grand-jury/">this article,</a> Signal does not take any more infomation than is required, and will not give it to the United States government. Additionly, they work with the <a href="https://www.aclu.org/">ACLU (American Civil Liberties Union)</a> to keep the rights of American people intact.
 
-                            <br>
-                            <br>
+                            <br><br>
 
-                            Signal comes with some quirks and features for anonymity, you can set it to <a href="https://twitter.com/tarah/status/1540376115201462272">automatically delete</a> messages after a certain timeframe. You can also set it to require a PIN by going Settings > Privacy > Screen Lock 
+                            Signal comes with some quirks and features for anonymity, you can set it to <a href="https://twitter.com/tarah/status/1540376115201462272">automatically delete</a> messages after a certain timeframe. You can also set it to require a PIN by going Settings > Privacy > Screen Lock. 
 
+                            <h5>TL;DR</h5>
+
+                            Signal is open-source and is not used to spy on users. It truly does not collect infomation aside from last login connection, and date of account creation. It's traffic is secured via E2E encryption.
+
+                        </p>
+
+                        <h3 id="vpns">VPNs and Misinfomation</h3>
+    
+                        <p>
+                            VPNs are one of the most generally misinformed pieces of technology security ever made. Many advertisers such as NordVPN, ExpressVPN, PrivateInternetAccess, etc., straight out lie to their customers, so I will go into the myths and truths of VPNs here. <a href="https://www.youtube.com/watch?v=WVDQEoe6ZWY">Tom Scott</a> made a very good video about this as well.
+
+                            <img src="../images/staying-hidden/vpn-diagram.png">
+
+                            <h5>Myths</h5>
+                            <ul>
+                                <li><b>All your traffic is unencrypted and freely available for attackers -</b> Most modern internet connections use HTTPS and not the outdated HTTP protocol. See <a class="smoothscroll" href="#domains">domain names</a> for more infomation about the difference.</li>
+                                <li><b>They will not give out data -</b> Most VPN companies will <a href="https://nordvpn.com/blog/how-nordvpn-protects-the-privacy-of-its-customers/">absolutely</a> give your data to law enforcement if asked. I will go into more details about this later on.</li>
+                                <li><b>They do not keep logs -</b> Almost all VPN companies keep logs of their users activity for legal reason. The basic premise is instead of giving your internet traffic to your Internet Service Provider, you give it to this VPN company.</li>
+                                <li><b>They use "military grade" encryption -</b> There is no "military grade" encryption, VPN connections use the same kind of encryption that anything else does (which is basically impossible to crack with modern computers). This encryption is no harder to break than standard <a class="smoothscroll" href="#domains">HTTPS</a> encryption.</li>
+                            </ul>
+
+                            <h5>Truths</h5>
+                            <ul>
+                                <li><b>It changes your location -</b> Yes, this is the true point of VPNs. Their true and original purpose was not for specifically security, but to gain access to a network from outside the network. If you had a server on a network and you were outside the network and wanted to access it, you would connect to a VPN server inside the netowrk and you would have access to all those device on that network. </li>
+                                <li><b>It gives you the server's IP address -</b> Any website that you visit will see the VPN server's <a href="https://www.geeksforgeeks.org/what-is-an-ip-address/">IP address</a> and not your own. </li>
+                                <li><b>The network you are on can see you are using a VPN -</b> Any network you are on will be able to see that you are making a VPN connection. They cannot see what the <i>contents</i> of the traffic are, but they do know that you are not using standard HTTPS/HTTP.</li>
+                                <li><b>It encrypts your traffic -</b> VPNs will actually encrypt your traffic, although most times it isn't super useful. The most common use case for this is if you are visiting a HTTP site that does not support HTTPS.</li>
+                            </ul>
+
+                            <h5>My Personal Trusted Providers</h5>
+                            (this is not sponsored, these are genuinely good)
+                            <ul>
+                                <li><b><a href="https://mullvad.net/en/">(PAID) Mullvad VPN -</a></b> I would not use VPNs for full anonymity. See <a class="smoothscroll" href="#tor">The Darkweb and Tor</a> for more infomation on why. That being said, Mullvad is open-source, uses a open-source VPN protocol of which you can choose between, is able to be paid for in <a href="https://www.monero.how/how-does-monero-privacy-work">Monero</a> which is the most private cryptocurrency (fuck bitcoin), and also hard cash via mailing. It is also based primarily in Sweden, and not American giving it Swedish privacy law jurisdiction. It is also CHEAPER than NordVPN, ExpressVPN, etc.</li>
+                                <li><b><a href="https://protonvpn.com/">(FREE) ProtonVPN -</a></b> I generally do not trust free VPN services, I don't even trust most paid VPN services. That being said, if you are not able to pay for Mullvad, or you don't want any sort of transaction to be made, then ProtonVPN would be my suggestion. It's open-source, and Swiss-based, giving it access to Swiss privacy laws.</li>
+                            </ul>
+
+                            <h5>TL;DR</h5>
+
+                            VPNs are very misinformed. They will change your virtual location. They will use the VPN server's IP address. VPN providers will keep logs, and they will give those logs to law enforcement. <b>They are not meant for security.
+                            </b>
+
+                            
                         </p>
 
                     </div> <!-- end blog-post__content -->
