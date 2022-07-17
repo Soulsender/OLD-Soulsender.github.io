@@ -153,11 +153,15 @@
 
                             <br><br>
 
-                            As is proven in <a href="https://signal.org/bigbrother/cd-california-grand-jury/">this article,</a> Signal does not take any more infomation than is required, and will not give it to the United States government. Additionly, they work with the <a href="https://www.aclu.org/">ACLU (American Civil Liberties Union)</a> to keep the rights of American people intact.
+                            As is proven in <a href="https://signal.org/bigbrother/cd-california-grand-jury/">this article,</a> Signal does not take any more infomation than is required, and will not give it to the United States government. Additionly, they work with the <a href="https://www.aclu.org/">ACLU (American Civil Liberties Union)</a>.
 
                             <br><br>
 
                             Signal comes with some quirks and features for anonymity, you can set it to <a href="https://twitter.com/tarah/status/1540376115201462272">automatically delete</a> messages after a certain timeframe. You can also set it to require a PIN by going Settings > Privacy > Screen Lock. 
+
+                            <br><br>
+
+                            (And for all the nerds out there, yes, I know Matrix exists, but no normal end user is going to be able to set up their own self-hosted Matrix server)
 
                             <blockquote>
                                 <h5>TL;DR</h5>
@@ -210,20 +214,41 @@
 
                         <h3 id="tor">The Dark Web and Tor</h3>
                         <b>It's not dangerous if you're not stupid.</b>
-    
+
                         <p>
                             <h5>Tor - The Onion Browser</h5>
-                            This is where your anonymity starts to get serious. The <a href="https://www.torproject.org/">Tor browser</a> is a special browser specifically designed to be completely anonymous (it's actually a version of Firefox if you can believe it). <b>THERE IS NOTHING ILLEGAL ABOUT DOWNLOADING THE TOR BROWSER.</b> It's actually funded by the United States government (I'll explain this later and why it's ok). 
+                            This is where your anonymity starts to get serious. The <a href="https://www.torproject.org/">Tor browser</a> is a special browser specifically designed to be completely anonymous (it's actually a forked version of Firefox if you can believe it). <b>THERE IS NOTHING ILLEGAL ABOUT DOWNLOADING THE TOR BROWSER.</b> It's actually funded by the United States government (I'll explain this later and why it's ok). 
 
                             <br><br>
 
-                           The Tor Browser uses a special type of technology called Onion Routing. This is named after an onion, because this type of routing uses "layers" to mask the user's traffic.
+                            The Tor Browser uses a special type of technology called Onion Routing. This is named after an onion, because this type of routing uses "layers" to mask the user's traffic.
 
-                           <img src="../images/staying-hidden/tor-diagram.jpeg"><br>
+                            <img style="margin-left: 80px;" src="../images/staying-hidden/tor-diagram.jpeg"><br>
 
-                           <h1>WORK IN PROGRESS</h1>
+                            This traffic is encrypted in a multi-layer way, where the relays cannot see past the next connected relay. The only thing the first relay will see is where the data is coming from, and the location of the next relay. The relay after that one will only see the relay before, and the relay after, but not the source of the data. This continues, until the last relay can see the destination of the traffic, but not the origin. Typically there will be 3 relays by default, but you could increase this at the cost of the speed of the connection. 
 
-                           
+                            <br><br>
+
+                            <h5>Tor with a VPN (don't do it)</h5>
+
+                            Some people say you should use tor with a VPN for "maximum" privacy, but this is not true, and might compromise your security. 
+
+                            <br><br>
+
+                            On <a>this page</a> on the tor wiki, they explain why you should not do this.
+
+                            <blockquote>
+                                "You can very well decrease your anonymity by using VPN/SSH in addition to Tor. (Proxies are covered in an extra chapter below.) If you know what you are doing you can increase anonymity, security and privacy.
+                                <br><br>
+                                Most VPN/SSH provider log, there is a money trail, if you can't pay really anonymously. (An adversary is always going to probe the weakest link first...). A VPN/SSH acts either as a permanent entry or as a permanent exit node. This can introduce new risks while solving others.
+                                <br><br>
+                                Who's your adversary? Against a global adversary with unlimited resources more hops make passive attacks (slightly) harder but active attacks easier as you are providing more attack surface and send out more data that can be used. Against colluding Tor nodes you are safer, against blackhat hackers who target Tor client code you are safer (especially if Tor and VPN run on two different systems). If the VPN/SSH server is adversary controlled you weaken the protection provided by Tor. If the server is trustworthy you can increase the anonymity and/or privacy (depending on set up) provided by Tor.
+                                <br><br>
+                                VPN/SSH can also be used to circumvent Tor censorship (on your end by the ISP or on the service end by blocking known tor exits)."
+                                <br><br>
+
+                                - <a href="https://gitlab.torproject.org/ahf">Alexander Færøy</a> on the <a href="https://gitlab.torproject.org/legacy/trac/-/wikis/doc/TorPlusVPN">Tor Wiki</a>
+                            </blockquote>
 
                         </p>
 
