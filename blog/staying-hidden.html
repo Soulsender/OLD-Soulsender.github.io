@@ -104,7 +104,11 @@
                             
                             <br><br>
 
-                            <b>I encourage you to read the entire thing if you feel seriously threatened, as understanding these concepts will help you in your privacy, but I've inculded a TL;DR (Too Long, Didn't Read) at the end of the section as well.</b>
+                            Please note that for the sake of simplicity, I have trivialized some aspects of the following technology in the hopes that it will be more understandable for the general audience. That being said, if something is not right with something I've written, you may contact me at <b>soulsender@tutanota.com</b>.
+
+                            <br><br>
+
+                            <b>I encourage you to read the entire thing if you feel seriously threatened, as understanding these concepts will help you in your privacy, but I've inculded a TL;DR (Too Long, Didn't Read) at the end of the section as well if you don't want to.</b>
                             
                             <br><br>
 
@@ -121,16 +125,21 @@
                                 <li><a class="smoothscroll" href="#vpns">VPNs and Misinfomation</a></li>
                                 <li><a class="smoothscroll" href="#tor">The Dark Web (it's not dangerous if you're not stupid) and Tor</a></li>
                                 <!-- <li><a class="smoothscroll" href="#domains">Domain Names</a></li>
-                                <li><a class="smoothscroll" href="#physical">Physical Security</a></li> -->
+                                <li><a class="smoothscroll" href="#physical">Physical Security</a></li>
+                                <li><a class="smoothscroll" href="#monero">Monero Private Crypto</a></li> -->
                             </ul>
                         </nav>
 
                         <blockquote>
                             <h3 id="shit">Abbreviations and Shit</h3>
-                            I use a lot of technical abbreviations, you can use this quick guide to know what the fuck I am talking about. I explain most of these more in detail in their respective sections.
+                            I use a lot of technical abbreviations, you can use this quick guide to know what I am talking about. I explain most of these more in detail in their respective sections.
                             <br><br>
                         
                             <ul>
+                                <li><b>Server -</b> A server is just a computer. It could be in "the cloud" or in someone's house, it doesn't really matter. Usually they do not have ordinary interactable components such as keyboards and monitors, but are controlled remotely.</li>
+                                <li><b>The Cloud -</b> The cloud is just a server that is rented out to a company or a individual. Some examples of this could be <a href="https://cloud.google.com/">Google Cloud</a>, <a href="https://aws.amazon.com/">Amazon Web Services (AWS)</a>, or <a href="https://www.digitalocean.com/">DigitalOcean</a>.</li>
+                                <li><b>2FA -</b> Two Factor Authentication. This is an extra security measure that uses a timed token on a local device to authenticate, as well as standard credentials.</li>
+                                <li><b>Network -</b> Like a WiFi network, but includes devices connected via wires like Ethernet. For the most part you can think of networks and wifi interchangably.</li>
                                 <li><b>Traffic -</b> Any kind of raw and unencrypted infomation. This could be website connections, wifi connections, etc.</li>
                                 <li><b>VPN (Virtual Private Network) -</b> A secure connection to a server from a client.</li>
                                 <li><b>IP (Internet Protocol) Address-</b> A string of numbers that computers use to talk to each other. It can be used to track your geographical location and internet traffic.</li>
@@ -248,6 +257,34 @@
                                 <br><br>
 
                                 - <a href="https://gitlab.torproject.org/ahf">Alexander Færøy</a> on the <a href="https://gitlab.torproject.org/legacy/trac/-/wikis/doc/TorPlusVPN">Tor Wiki</a>
+                            </blockquote>
+
+                            In short, using Tor is completely anonymous, while using a VPN only hands your infomation to the VPN provider. This completely defeats the purpose of Tor, and is unnessesary. 
+
+                            <br><br>
+
+                            Just like in the VPN section, I will do a overview of Truths and Myths of Tor.
+
+                            <h5>Myths</h5>
+                            <ul>
+                                <li><b>You are at risk while using Tor -</b> Some people have the strange and irrational idea that while using Tor, you are making yourself more vulnerable to evil hackers and the like. This is not true, and is a total myth. The only thing leaving and entering your network is the Tor requests. These are obviously encrypted.</li>
+                                <li><b>You are <u>completely</u> anonymous while using Tor -</b> As much as I wish this wasn't true, there is no totally anonymity. There will always be something to trace back, whether that be a end user mistake or a mistake on the software. There is a potential way to reverse-engineer Tor connections, by tracking the data from the exit node. <b>Fortunately, this has never been done to my knowledge.</b></li>
+                                <li><b>Running Tor as a service on Linux enables it -</b> This is false, running a Tor daemon DOES NOT make your traffic go through the Tor network. Only using specific tools such as the Tor browser itself, or something like proxychains will do this.</li>
+                                <li><b>Tor has NSA backdoors -</b> This is a myth. See the truth about this below.</li>
+                            </ul>
+
+                            <h5>Truths</h5>
+                            <ul>
+                                <li><b>Tor is funded by the American government -</b> Yes this is true. Tor is funded by the American government. The reason for this, is because when Tor was developed, the creators realized that if the technology was only available to America, it would be quite clear where traffic was coming from. The solution to this was to release it everywhere, China, Russia, Brazil, worldwide it is used to avoid censorship, to troubleshoot, to provide an extra layer of privacy for the paranoid, and do evil things unfortunately. As the Tor browser is open-source, it is highly unlikely there would be any backdoors in the protocol and browser, and to this day none have been found.</li>
+                                <li><b>Clearnet sites work on Tor -</b> Most clearnet websites work fine with Tor, unless they have a blocker for Tor. Sometimes you can run into issues with things like cloudflare, as website can very easily tell you are using a Tor connection, although they would not know where from of course.</li>
+                                <li><b>Tor is a fork of Firefox -</b> Tor is actually a fork of Firefox. Firefox is open-source, and Mozilla has no relation with the Tor project.</li>
+                            </ul>
+
+                            <blockquote>
+                                <h5>TL;DR</h5>
+
+                                Tor is pretty much the end-all of online privacy. It uses multiple layers of encryption, in a way where the source and destination are nearly impossible to both locate. It has not been cracked, and any faults are due to the end user and not the protocol.
+                                </b>
                             </blockquote>
 
                         </p>
