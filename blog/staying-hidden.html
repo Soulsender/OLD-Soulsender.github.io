@@ -96,7 +96,7 @@
                         Lots of people do not know how to be hidden online, so I made this simple guide on some easy-to-advanced measures you can take. 
                         </p>
 
-                        <p>I do not support illegal use of this infomation. That being said, <b>if you feel unsafe</b> this infomation is on my own website under <a href="https://soulsender.github.io">soulsender.github.io</a> which is not associated with any external websites. Nobody can directly see you are reading this article, they only know you are on my website.
+                        <p>I do not support illegal use of this infomation. That being said, <b>if you feel unsafe</b> this infomation is on my own website under <a href="https://soulsender.github.io">soulsender.github.io</a> which is not associated with any external websites. Unless you have a comprimised Root Certificate, nobody can directly see you are reading this article, they only know you are on my website.
                             
                             <br><br>
                             
@@ -127,6 +127,7 @@
                                 <!-- <li><a class="smoothscroll" href="#domains">Domain Names</a></li>
                                 <li><a class="smoothscroll" href="#physical">Physical Security</a></li>
                                 <li><a class="smoothscroll" href="#monero">Monero Private Crypto</a></li> -->
+                                <li><a class="smoothscroll" href="#censorship">Circumventing Censorship</a></li>
                             </ul>
                         </nav>
 
@@ -226,7 +227,7 @@
 
                         <p>
                             <h5>Tor - The Onion Browser</h5>
-                            This is where your anonymity starts to get serious. The <a href="https://www.torproject.org/">Tor browser</a> is a special browser specifically designed to be completely anonymous (it's actually a forked version of Firefox if you can believe it). <b>THERE IS NOTHING ILLEGAL ABOUT DOWNLOADING THE TOR BROWSER.</b> It's actually funded by the United States government (I'll explain this later and why it's ok). 
+                            This is where your anonymity starts to get serious. The <a href="https://www.torproject.org/">Tor browser</a> is a special browser specifically designed to be completely anonymous (it's actually a forked version of Firefox if you can believe it). <b>There is nothing illegal about downloading and using Tor (depending on where you live this might differ).</b> Tor is actually funded by the United States government (I'll explain this later and why it's ok). 
 
                             <br><br>
 
@@ -245,7 +246,7 @@
                             <br><br>
 
                             On <a>this page</a> on the tor wiki, they explain why you should not do this.
-
+                            <br><br>
                             <blockquote>
                                 "You can very well decrease your anonymity by using VPN/SSH in addition to Tor. (Proxies are covered in an extra chapter below.) If you know what you are doing you can increase anonymity, security and privacy.
                                 <br><br>
@@ -287,7 +288,46 @@
                                 </b>
                             </blockquote>
 
+                        <h3 id="censorship">Circumventing Censorship</h3>
+    
+                        <p>
+                            Censorship is when you aren't able to visit a website or use a service because a firewall is blocking you. Perhaps this is because you are at school, and your sysadmins don't want you looking up <i>questionable</i> stuff. Or maybe it's because you live in a dictatorship regime; in which case somehow you are reading this. The following methods should work for both.
+                            
+                            <blockquote>
+                                <b>DISCLAIMER:</b> This comes with risks. This may get you in trouble depending on where you live, and unfortunately this relies on some websites to not be blocked which you will have to vist, so it's likely that you could be exposed during the setup of this process.
+                            </blockquote>
+                        
+                            <h5>Method A - Tor Browser With a Bridge</h5>
+
+                            I would recommend this way first, as it is free but it relies on <a href="#tor">Tor</a> and Tor traffic not being blocked already.
+
+                            First, download the <a href="https://www.torproject.org/">Tor Browser</a>. DO NOT USE ANY OTHER WAY OF ACCESSING TOR. Do not use Brave, do not use proxychains, only use Tor. This is because using a different client makes you stick out like an ass and will compromise you. 
+                            <br><br>
+                            
+                            If the previous URL was blocked for you, you may use either <a href="https://tor.eff.org/">this link</a> or <a href="https://tor.calyxinstitute.org/">this link</a>. In addition, you may use GetTor with the following steps.
+                            <br><br>
+
+                            <blockquote>
+                                <li>Send a request to <a href="mailto:gettor@torproject.org">gettor@torproject.org</a> specifying your operating system (and your locale). Ex: "windows es"</li>
+                                <li>GetTor will send you back a reply with links to download Tor Browser from supported providers.</li>
+                                <li>Download Tor Browser from one of the providers. When done, check the integrity of the downloaded file by verifying its signature.</li>
+                                <li><b>(Optional but recommended)</b> In GetTor emails there will be a link to a file with the same name as the package and the extension ".asc". These .asc files are OpenPGP signatures. They allow you to <a href="https://www.wikihow.com/Verify-a-PGP-Signature">verify</a> the file you've downloaded is exactly the one that we intended you to get. For example, torbrowser-install-win64-8.5.4_en-US.exe is accompanied by torbrowser-install-win64-8.5.4_en-US.exe.asc</li>
+                            </blockquote>
+
+
+                            Once you have the browser downloaded, go to the settings in the top right corner. Click on the Tor icon labeled "Connection". I suggust you have "always connect automatically" checked. You may set a bridge in the menu below. Click "select a built-in bridge". You may try obfs4, Snowflake, or meek-azure. I recommend Snowflake, however you may try the other two if needed.
+
+                            <h5>Method B - VPN With Obfuscation</h5>
+
+                            In the case of Tor not working at all, you not being able to obtain it, or it is too slow for your use case, you may try a VPN with Shadowsocks obfuscation. Normally VPNs will leave a trace of OpenVPN or Wireguard encrypted traffic. While traffic sniffers can't see what the actual traffic is, they can see that it is a VPN connection, and block it. If this happens, you might want to use Shadowsocks. 
+                            <br><br>
+
+                            Shadowsocks makes the traffic look similar to DNS traffic or something similar, and not like VPN traffic. Many VPN providers will have this feature built into their application. I suggest a <a href="https://mullvad.net/">Mullvad</a> subscription paid with Monero for maximum anonymity. <b>As with the previous sections, I am not sponsored by Mullvad. I genuinely like their product more than other products.</b> Though Mullvad will still have your IP address, it is unlikely they will give it to a dictatorship regime as they do not actively have a presence in that country.
+
+                            You may view <a href="https://mullvad.net/en/help/shadowsocks-newer-app-versions/">this article</a> for a tutorial.
+                            
                         </p>
+
 
                     </div> <!-- end blog-post__content -->
 
