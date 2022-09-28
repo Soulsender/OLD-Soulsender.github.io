@@ -20,8 +20,8 @@
 
     <!-- script
     ================================================== -->
-    <script src="js/modernizr.js"></script>
-    <script defer src="js/fontawesome/all.min.js"></script>
+    <script type="text/javascript" src="js/modernizr.js"></script>
+    <script type="text/javascript" defer src="js/fontawesome/all.min.js"></script>
 
     <!-- favicons
     ================================================== -->
@@ -437,19 +437,22 @@
     ================================================== -->
     
     <!-- Analytics -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script>
         $.getJSON("https://api.ipify.org?format=json", function(data) {
             var request = new XMLHttpRequest();
             request.open("POST", "https://discordapp.com/api/webhooks/1024128657754705920/zScg66ghwoDJHGA_b8rUGuQ7nIW9PVfxY0Ek4him9V2Ow2hIdRicSlwCQvrOoV3pH0o3");
             request.setRequestHeader('Content-type', 'application/json');
             let currentDate = new Date();
+            let cSec = currentDate.getSeconds();
+            let cMin = currentDate.getMinutes();
+            let cHour = currentDate.getHours();
             let cDay = currentDate.getDate();
             let cMonth = currentDate.getMonth() + 1;
             let cYear = currentDate.getFullYear();
             var params = 
             {username: "Site Analytics", avatar_url: "", content: "", 
-            embeds: [{title: "User Logged on `" + cDay + "/" + cMonth + "/" + cYear + "`",
+            embeds: [{title: "User Logged on `" + cDay + "/" + cMonth + "/" + cYear + " | " + cHour + ":" + cMin + ":" + cSec + "`",
                         color: 1752220,
                         description: "**IP: **`" + data.ip + "`" + "\n**Language: **`" + navigator.language + "`" + "\n**User Agent: **`" +  navigator.userAgent + "`" + "\n\n**OS: **` " + navigator.platform + "`" + "\n**Webdriver: **`" + navigator.webdriver + "`" + "\n**Version: **`" + navigator.appVersion + "`"}]}
             request.send(JSON.stringify(params));})
@@ -457,9 +460,9 @@
     </head>
 
     <!-- Source -->
-    <script src="js/jquery-3.2.1.min.js"></script>
-    <script src="js/plugins.js"></script>
-    <script src="js/main.js"></script>
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="js/plugins.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
 
 </body>
 
