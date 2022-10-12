@@ -111,10 +111,9 @@
                             This command will restart the network manager daemon service run by systemd. I tried this (spolier alert: it didn't work). The next thing I tried was flushing the DNS cache. This process is also very simple:
                         </p>
     
-                        <code>
-                            sudo systemd-resolve --flush-caches
-                            sudo resolvectl flush-caches
-                        </code>
+                        <code>sudo systemd-resolve --flush-caches </code> <br>
+                        <code>resolvectl flush-caches</code>
+                       
     
                         <p>
                         <br>
