@@ -123,9 +123,14 @@
                         Once the installation had finished, the machine booted to the very-friendly tty prompt. I updated and upgraded the system, installed docker (and neofetch of course) and checked my local IP address I had been assigned my my router.
                         <br><br>
                         
+                        <div class="codeblock">
                             <code>sudo apt update -y && sudo apt upgrade -y</code><br>
                             <code>sudo apt install docker.io neofetch</code><br>
                             <code>ip a</code>
+                        </div><br>
+                            
+
+                        I also had to configure the device to use a static IP that would not change. This would make it easier to isolate it on my network. To do this, you must edit the config file in <code>/etc/netplan/00-installer-config.yaml</code>
                             
                         
 

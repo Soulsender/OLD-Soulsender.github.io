@@ -119,10 +119,10 @@
                             I decided to go with the base iso to get the true Minimalist Experience (TM). I had practiced installing and setting up KDE Plasma in a virtual machine, so I knew what I had to do - in theory anyways. After flashing the iso to a dirve using Rufus (I had some issues with DD on linux), I booted to the live envrioment, and the welcoming arms of tty1. Void has a nice terminal-gui installer. It runs in a tty, but isn't a real graphical interface.                               
                         </p>
 
-                        
-                            <code>
+                        <div class="codeblock"><code>
                                 void-installer
-                            </code>
+                            </code></div>
+                            
                         
                         
     
@@ -146,9 +146,10 @@
                             
                         </p>
 
-                        <code>
+                        <div class="codeblock"><code>
                             chmod 755 /home/soul
-                        </code>
+                        </code></div>
+                        
 
                         <p>
                             <br>
@@ -161,9 +162,10 @@
                             After dealing with the home directory fiasco, I wanted to get my graphical envrioment set up - as much as I like looking at black and white text. This is something I had already tried in a VM, and wasn't too hard to do. The <a href="https://docs.voidlinux.org/config/graphical-session/xorg.html">documentation</a> helped a lot here. Basically, you have to install Plasma, the Plasma baseapps, as well as Xorg which is the compositor using:
                         </p>
 
-                        <code>
+                        <div class="codeblock"><code>
                             sudo xbps-install kde5 kde5-baseapps xorg
-                        </code>
+                        </code></div>
+                        
 
                         <p>
                             <br>
@@ -172,7 +174,7 @@
                             The documentation just says to add the dbus, sddm (optional), and xorg daemon to the startup which was pretty easy, and to write the execution to the .xinitrc in your user home directory. The last line is just starting the enviroment.
                         </p>
                         
-                        <code>
+                        <div class="codeblock"><code>
                             ln -s /etc/sv/dbus /var/service
                         </code>
                         <br>
@@ -190,7 +192,8 @@
                         <br>
                         <code>
                             startx
-                        </code>
+                        </code></div>
+                        
                         
                         <p>
                             <br>
@@ -199,9 +202,10 @@
                             Then I came across the gold command:
                         </p>
 
-                        <code>
+                        <div class="codeblock"><code>
                             sudo chmod u+w soul .Xauthority
-                        </code>
+                        </code></div>
+                        
 
                         <p>
                             <br>

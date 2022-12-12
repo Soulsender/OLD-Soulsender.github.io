@@ -102,19 +102,21 @@
                             I run Linux on my laptop, and sometimes the network-manager does not initialize on boot. This is usually fine, I just need to restart the network daemon. This is a pretty simple and self-explanatory command:
                         </p>
 
-                        <code>
+                        <div class="codeblock"><code>
                             sudo service network-manager restart
-                        </code>
+                        </code></div>
+                        
     
                         <p>
                             <br>
                             This command will restart the network manager daemon service run by systemd. I tried this (spolier alert: it didn't work). The next thing I tried was flushing the DNS cache. This process is also very simple:
                         </p>
     
-                        <code>sudo systemd-resolve --flush-caches </code> <br>
-                        <code>resolvectl flush-caches</code>
-                       
-    
+                        <div class="codeblock">
+                            <code>sudo systemd-resolve --flush-caches </code> <br>
+                            <code>resolvectl flush-caches</code>
+                        </div>
+                        
                         <p>
                         <br>
                         This didn't work either, so I tried one more thing. The MAC Address.
@@ -138,9 +140,11 @@
                             So I used this program to generate a new and random address for my device. It's very easy to do:
                         </p>
 
-                        <code>
+                        <div class="codeblock"><code>
                             sudo macchanger -r wlp59s0
-                        </code>
+                        </code></div>
+                    
+                        
 
                         <p>
                             <br>
@@ -160,7 +164,8 @@
 
                         <p> After copying and inputing my phone's MAC address into my laptop via</p>
 
-                        <code>sudo macchanger -m (the phone's mac address) wlp59s0</code>
+                        <div class="codeblock"><code>sudo macchanger -m (the phone's mac address) wlp59s0</code></div>
+                        
 
                         <p><br>I restarted the network manager daemon, and BOOM. I had internet again. Because my iPhone was already registered on the network BEFORE I started messing with my laptop's MAC, it would not look suspicious at all - they would have no way to know the owner of the MAC address had changed. To the network, it was my phone - when in reality, it was my laptop.</p>
 
