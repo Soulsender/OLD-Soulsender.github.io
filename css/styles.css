@@ -103,6 +103,11 @@
     --font-mono: Consolas, "Andale Mono", Courier, "Courier New", monospace;
 }
 
+.sum {
+    display: block !important;
+    white-space: pre-wrap !important;
+  }  
+
 /* ------------------------------------------------------------------- 
  * ## colors 
  * ------------------------------------------------------------------- */
@@ -191,7 +196,7 @@
     /* others
      */
     --color-white-bg: white;
-    --color-dark-bg : #131516;
+    --color-dark-bg : #1c1d1f;
     --color-border  : var(--color-gray-2);
 }
 
@@ -399,7 +404,7 @@ b, strong {
 /* 1. Correct the inheritance and scaling of font size in all browsers.
  * 2. Correct the odd `em` font sizing in all browsers. */
 
-code, kbd, samp {
+kbd, samp {
     font-family: monospace, monospace;
     /* 1 */
     font-size: 1em;
@@ -1795,7 +1800,7 @@ figcaption {
     margin-bottom: 0;
 }
 
-var, kbd, samp, code, pre {
+var, kbd, samp, pre {
     font-family: var(--font-mono);
 }
 
@@ -1805,7 +1810,7 @@ pre {
     overflow-x: auto;
 }
 
-code {
+/* code {
     font-size: var(--text-sm);
     line-height: 1.6rem;
     margin: 0 .2rem;
@@ -1824,7 +1829,7 @@ pre>code {
     padding: 0;
     margin: 0;
     border: none;
-}
+} */
 
 del {
     text-decoration: line-through;
