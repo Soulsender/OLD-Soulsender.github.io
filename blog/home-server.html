@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+
+    <!--- basic page needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <title>Home Server - Soulsender</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/vendor.css">
+
+    <!-- script
+    ================================================== -->
+    <script src="js/modernizr.js"></script>
+    <script defer src="js/fontawesome/all.min.js"></script>
+
+    <!-- favicons
+    ================================================== -->
+    <link rel="icon" href="../favicon.svg">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+
+</head>
+
+<body id="top">
+
+
+    <!-- preloader
+    ================================================== -->
+    <div id="preloader">
+        <div id="loader"></div>
+    </div>
+
+
+    <!-- header
+    ================================================== -->
+    <header class="s-header s-header--blog">
+        <div class="row">
+
+            <div class="s-header__logo">
+                <a href="../index.html">
+                    
+                </a>
+            </div>
+
+            <nav class="s-header__nav">
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li class="current"><a href="">Blog</a></li>
+                </ul>
+            </nav>
+
+            <a class="s-header__menu-toggle" href="#0" title="Menu">
+                <span class="s-header__menu-icon"></span>
+            </a>
+
+            
+
+        </div> <!-- end row -->
+    </header> <!-- end s-header -->
+
+
+    <!-- blog content
+    ================================================== -->
+    <div class="blog-content">
+
+        <div class="row blog-post-wrap">
+            <div class="column large-12">
+
+                <article class="blog-post">
+
+                    <div class="blog-post__header">
+                        <h1 class="blog-post__title">Setting Up a Laptop Home Server</h1>
+                        
+                        <div class="blog-post__meta">
+
+                            <div class="blog-post__date">Dec 12, 2022</div>
+
+                        </div>
+                    </div> <!-- blog-post__header -->
+
+                    <div class="blog-post__content">
+
+                        <p class="lead drop-cap">
+                            Old electronics. 
+                        </p>
+
+                        Many people just have old electronics lying around their house collecting dust. Once they get a new laptop or tablet, what use are old devices? Well there are plenty of different things you can do with them once they've expired past their best before date. One of which is using it as a server.
+
+                        <h3>Wait, A Server?</h3>
+
+                        Yeah. A server doesn't have to be this absolute monster of a machine with 256gb of RAM and fancy SSDs and HDDs and crap. Nope, all it needs to be is a computer that runs some kind of server operating server - such as Windows Server, some variant of Linux, BSD, or any other miscellaneous OS depending on your project.
+
+                        <br><br>
+
+                        In my case, I chose <a href="https://ubuntu.com/download/server">Ubuntu server 22.04</a>. I chose it because it is relatively lightweight, easy to setup, and includes drivers for many things on the device I was using such as wifi. My house's ethernet capabilities are limited, so I might have to keep it connected to the network via wifi which is not ideal, but works well enough. I considered Proxmox as well, but decided to stick with Ubuntu server which I will set up to use <a href="https://www.portainer.io/">Portainer</a> - a web GUI for managing docker containers.
+
+                        <br><br>
+
+                        The device I am using is a old Dell Inspirion that my friend graciously gave to me. The screen is falling apart and you can see the exposed wiring and behind the screen which is a little iffy. Fortunately, it works great for our use case, as I will not really be using the display for anything aside from the installation of Ubuntu server. The laptop itself has 8gb of RAM and a 256gb SSD, as well as an ethernet port which is great, and not something you find often on laptops much anymore.
+
+                        <h3>Step 1: Installing Ubuntu server</h3>
+
+                        As per usual with any Linux distro, I had to mess with the system's BIOS before I could launch the installation media. This really just involves changing the boot order, making sure UEFI boot is enabled, and disabling secure boot.
+
+                        <br><br>
+
+                        The installation was very straightforward, as Ubuntu server has a nice TUI installation interface. I debated using encryption, but decided not to in the end as it would interrupt the boot whenever the machine rebooted, and add extra complexity. I don't intend on storing anything particularly sensitive on it, so this is okay. 
+
+                        <br><br>
+
+                        Once the installation had finished, the machine booted to the very-friendly tty prompt. I updated and upgraded the system, installed docker (and neofetch of course) and checked my local IP address I had been assigned my my router.
+                        <br><br>
+                        
+                            <code>sudo apt update -y && sudo apt upgrade -y</code><br>
+                            <code>sudo apt install docker.io neofetch</code><br>
+                            <code>ip a</code>
+                            
+                        
+
+
+                    </div> <!-- end blog-post__content -->
+
+                </article> <!-- blog post -->
+
+
+    <!-- Java Script
+    ================================================== -->
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/main.js"></script>
+
+</body>
+
+</html>
