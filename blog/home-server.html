@@ -98,7 +98,16 @@
 
                         Many people just have old electronics lying around their house collecting dust. Once they get a new laptop or tablet, what use are old devices? Well there are plenty of different things you can do with them once they've expired past their best before date. One of which is using it as a server.
 
-                        <h3>Wait, A Server?</h3>
+                        
+                        <h2>Table Of Contents</h2>
+                        <nav>
+                            <ul>
+                                <li><a class="smoothscroll" href="#server">Wait, A Server?</a></li>
+                                <li><a class="smoothscroll" href="#ubuntu">Step 1: Installing and Configuring Ubuntu Sever</a></li>
+                            </ul>
+                        </nav>
+
+                        <h3 id="server">Wait, A Server?</h3>
 
                         Yeah. A server doesn't have to be this absolute monster of a machine with 256gb of RAM and fancy SSDs and HDDs and crap. Nope, all it needs to be is a computer that runs some kind of server operating server - such as Windows Server, some variant of Linux, BSD, or any other miscellaneous OS depending on your project such as unRaid or TrueNAS.
 
@@ -110,8 +119,9 @@
 
                         The device I am using is a old Dell Inspirion that my friend graciously gave to me. The screen is falling apart and you can see the exposed wiring and behind the screen which is a little iffy. Fortunately, it works great for our use case, as I will not really be using the display for anything aside from the installation of Ubuntu server. The laptop itself has 8gb of RAM and a 256gb SSD, as well as an ethernet port which is great, and not something you find often on laptops much anymore.
 
-                        <h3>Step 1: Installing Ubuntu server</h3>
+                        <h3 id="ubuntu">Step 1: Installing Ubuntu server</h3>
 
+                        <h5>The OS Installation</h5>
                         As per usual with any Linux distro, I had to mess with the system's BIOS before I could launch the installation media. This really just involves changing the boot order, making sure UEFI boot is enabled, and disabling secure boot.
 
                         <br><br>
@@ -122,7 +132,7 @@
 
                         The installation was very straightforward, as Ubuntu server has a nice TUI installation interface. I debated using encryption, but decided not to in the end as it would interrupt the boot whenever the machine rebooted, and add extra complexity. I don't intend on storing anything particularly sensitive on it, so this is okay. 
 
-                        <br><br>
+                        <h5>Inital System Checks</h5>
 
                         Once the installation had finished, the machine booted to the very-friendly tty prompt. I updated and upgraded the system, installed docker (and neofetch of course) and checked my local IP address I had been assigned my my router.
                         <br><br>
@@ -136,9 +146,10 @@
                         <br>
 
                         <blockquote>
-                            Be careful here, as sometimes Ubuntu will install the <b>snap</b> package version of Docker instead of the apt version.
+                            Be careful here, as sometimes Ubuntu will install the <b>snap</b> package version of Docker instead of the <b>apt</b> version. The snap version can cause some errors with portainer.
                         </blockquote>
                             
+                        <h5>Creating a Static IP</h5>
 
                         I also had to configure the device to use a static IP that would not change. This would make it easier to isolate it on my network. To do this, you must edit the config file
 
@@ -170,9 +181,28 @@
                             <li><b>enp1s0</b> - this is the name of the interface we will be using. You can get a list of these with the command "ip link". Wireless interfaces will usually start with a W and ethernet interfaces will usually start with an E.</li>
                             <li><b>addresses</b> - this defines the actual static IP we would like to assign. In my case it is "192.168.1.70". "/24" defines the subnet of the network, which is basically what IP addresses are allowed to be assigned.</li>
                             <li><b>gateway4</b> - this is the IP of the router we will use, also known as the gateway. You can find this with the command "ip route".</li>
-                            
+                            <li><b>nameservers</b> - these are the DNS servers you would like to use for your system. In this case I have "1.1.1.1" and "8.8.8.8" which are cloudflare and google's DNS servers, although you are free to use a different one or even run your own!</li>
+                            <li><b>dhcp4</b> - this just tells the system that we do not want to use DHCP to obtain our local IP address, but rather use the one we've already specified.</li>
                         </ul>
-                            
+
+                        <h5>Laptop Tricks</h5>
+
+                        Because this was a laptop, I would like to be able to close the screen and not have to worry about it shutting down. Thanks to <a href="https://www.youtube.com/watch?v=HxvFuGnjoJo&t=1013s">TechHut</a> for this. This is very easy to do, and only requires a configuration change in
+
+                        <br><br>
+                        <div class="codeblock">
+                            <code>/etc/systemd/login.conf</code>
+                        </div>
+
+                        <br>
+                        and set this
+
+                        <br><br>
+                        <div class="codeblock"><code>
+                            HandleSuspendKey=ignore<br>
+                            HandleLidSwitch=ignore
+                        </code></div>
+                        
                         
 
 
