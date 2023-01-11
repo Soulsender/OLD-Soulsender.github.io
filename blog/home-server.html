@@ -100,11 +100,11 @@
 
                         <h3>Wait, A Server?</h3>
 
-                        Yeah. A server doesn't have to be this absolute monster of a machine with 256gb of RAM and fancy SSDs and HDDs and crap. Nope, all it needs to be is a computer that runs some kind of server operating server - such as Windows Server, some variant of Linux, BSD, or any other miscellaneous OS depending on your project.
+                        Yeah. A server doesn't have to be this absolute monster of a machine with 256gb of RAM and fancy SSDs and HDDs and crap. Nope, all it needs to be is a computer that runs some kind of server operating server - such as Windows Server, some variant of Linux, BSD, or any other miscellaneous OS depending on your project such as unRaid or TrueNAS.
 
                         <br><br>
 
-                        In my case, I chose <a href="https://ubuntu.com/download/server">Ubuntu server 22.04</a>. I chose it because it is relatively lightweight, easy to setup, and includes drivers for many things on the device I was using such as wifi. My house's ethernet capabilities are limited, so I might have to keep it connected to the network via wifi which is not ideal, but works well enough. I considered Proxmox as well, but decided to stick with Ubuntu server which I will set up to use <a href="https://www.portainer.io/">Portainer</a> - a web GUI for managing docker containers.
+                        In my case, I chose <a href="https://ubuntu.com/download/server">Ubuntu server 22.04</a>. I chose it because it is relatively lightweight, easy to setup, and includes drivers for many things on the device. I considered Proxmox as well, but decided to stick with Ubuntu server which I will set up to use <a href="https://www.portainer.io/">Portainer</a> - a web GUI for managing docker containers.
 
                         <br><br>
 
@@ -115,6 +115,10 @@
                         As per usual with any Linux distro, I had to mess with the system's BIOS before I could launch the installation media. This really just involves changing the boot order, making sure UEFI boot is enabled, and disabling secure boot.
 
                         <br><br>
+
+                        <blockquote>
+                            I tried to use a ventoy usb to install Ubuntu server, but whenever I tried to boot it would cause a kernel panic and fail, so I instead just flashed the Ubuntu server iso onto a 8gb flash drive I had and installed from that.
+                        </blockquote>
 
                         The installation was very straightforward, as Ubuntu server has a nice TUI installation interface. I debated using encryption, but decided not to in the end as it would interrupt the boot whenever the machine rebooted, and add extra complexity. I don't intend on storing anything particularly sensitive on it, so this is okay. 
 
@@ -127,10 +131,47 @@
                             <code>sudo apt update -y && sudo apt upgrade -y</code><br>
                             <code>sudo apt install docker.io neofetch</code><br>
                             <code>ip a</code>
-                        </div><br>
+                        </div>
+                        
+                        <br>
+
+                        <blockquote>
+                            Be careful here, as sometimes Ubuntu will install the <b>snap</b> package version of Docker instead of the apt version.
+                        </blockquote>
                             
 
-                        I also had to configure the device to use a static IP that would not change. This would make it easier to isolate it on my network. To do this, you must edit the config file in <code>/etc/netplan/00-installer-config.yaml</code>
+                        I also had to configure the device to use a static IP that would not change. This would make it easier to isolate it on my network. To do this, you must edit the config file
+
+                        <br><br>
+                        <div class="codeblock"><code>/etc/netplan/00-installer-config.yaml</code></div>
+                        <br>
+
+                        and edit the respective interface config:
+
+                        <br><br>
+                        <div class="codeblock">
+                            <code>
+                            <pre>
+    network:
+        ethernets:
+            enp1s0:
+            addresses: [192.168.1.70/24]
+            gateway4: 192.168.1.254
+            nameservers:
+                addresses: [1.1.1.1, 8.8.8.8]
+            dhcp4: false
+        version: 2</pre>
+                            </code>
+                        </div>
+                        <br>
+
+                        <ul>
+                            <li><b>ethernets</b> - this line defines that we will be using ethernet instead of wifi. </li>
+                            <li><b>enp1s0</b> - this is the name of the interface we will be using. You can get a list of these with the command "ip link". Wireless interfaces will usually start with a W and ethernet interfaces will usually start with an E.</li>
+                            <li><b>addresses</b> - this defines the actual static IP we would like to assign. In my case it is "192.168.1.70". "/24" defines the subnet of the network, which is basically what IP addresses are allowed to be assigned.</li>
+                            <li><b>gateway4</b> - this is the IP of the router we will use, also known as the gateway. You can find this with the command "ip route".</li>
+                            
+                        </ul>
                             
                         
 
