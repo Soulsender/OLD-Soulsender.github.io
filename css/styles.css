@@ -365,12 +365,10 @@ hr {
 /* 1. Correct the inheritance and scaling of font size in all browsers.
  * 2. Correct the odd `em` font sizing in all browsers. */
 
-pre {
+/* pre {
     font-family: monospace, monospace;
-    /* 1 */
     font-size: 1em;
-    /* 2 */
-}
+} */
 
 /* ------------------------------------------------------------------- 
  * ## text-level semantics
@@ -651,7 +649,7 @@ svg, img, video embed, iframe, object {
 /* ------------------------------------------------------------------- 
  * ## typography resets
  * ------------------------------------------------------------------- */
-div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, p, blockquote, th, td {
+div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, form, p, blockquote, th, td {
     margin: 0;
     padding: 0;
 }
@@ -1746,8 +1744,9 @@ small {
 blockquote {
     margin: 0 0 var(--vspace-1) 0;
     padding: var(--vspace-1) var(--vspace-1_5);
-    border-left: 4px solid black;
+    border-left: 6px solid black;
     position: relative;
+    background-color: #f3f3f3;
 }
 
 @media screen and (max-width: 400px) {
@@ -1800,15 +1799,15 @@ figcaption {
     margin-bottom: 0;
 }
 
-var, kbd, samp, pre {
+var, kbd, samp {
     font-family: var(--font-mono);
 }
 
-pre {
+/* pre {
     padding: var(--vspace-0_75) var(--vspace-1) var(--vspace-1);
     background: var(--color-gray-1);
     overflow-x: auto;
-}
+} */
 
 /* code {
     font-size: var(--text-sm);
@@ -2019,8 +2018,7 @@ fieldset, button, .btn {
 
 input, 
 textarea, 
-select, 
-pre, 
+select,  
 blockquote, 
 figure, 
 figcaption, 
@@ -2459,7 +2457,6 @@ input::-moz-focus-inner {
 
 .lining dt+dt:before, .lining dd+dt:before {
     content: "\A";
-    white-space: pre;
 }
 
 .lining dd+dd:before {
