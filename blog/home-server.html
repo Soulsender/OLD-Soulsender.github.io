@@ -104,6 +104,7 @@
                             <ul>
                                 <li><a class="smoothscroll" href="#server">Wait, A Server?</a></li>
                                 <li><a class="smoothscroll" href="#ubuntu">Step 1: Installing and Configuring Ubuntu Sever</a></li>
+                                <li><a class="smoothscroll" href="#services">Step 2: Services</a></li>
                             </ul>
                         </nav>
 
@@ -202,6 +203,56 @@
                             HandleSuspendKey=ignore<br>
                             HandleLidSwitch=ignore
                         </code></div>
+
+                        <h5>Tailscale VPN</h5>
+
+                        I wanted to access my server from outside my home. As it was right now, I would only be able to connect if I was on the LAN (Local Area Network). Generally there are two solutions to this. 
+                        <br><br>
+                        The first is port forwarding which involves passing a port through your router to the big bad internet. This is great for something like a website, but not so much for more sensitive things such as filesharing. I didn't want to do this, as anybody would be able to connect and attack my server even with passwords and proper authentication. This left the other option.
+                        <br><br>
+                        A VPN (Virtual Private Network) is a remote way to connect to a LAN. I went over VPNs in more detail on my <a href="https://soulsender.me/blog/staying-hidden#vpns">Staying Hidden Guide</a> post.
+                        <br><br>
+                        I have set up my own VPN using Wireguard in the past, but it is complicated and annoying, as you have to manually configure each device connecting. Instead, I am using a free and open-source service called <a href="https://tailscale.com/">Tailscale</a>. I really like this service, because they create your very own VPN network between all of your devices automatically, and also give you a special domain to use on that network. New devices can very easily be connected by downloading the client on that respective device, and logging in. I have never been prompted to pay for any kind of premium, so I highly recommend this service. 
+
+                        <br><br>
+                        <img src="../images/home-server/tailscale_example.png">
+
+                        Using this, my laptop, gaming PC, and phone can all talk to my server, just by using the assigned IP or domain.
+
+                        <h3 id="services">Part 2: Services</h3>
+
+                        Now that the basics of my server were all setup and ready to go, it was time to start configuring the actual services that I will be using. The ones I decided to use were Portainer for docker containers, Jellyfin for media, MeTube for video downloading, PiHole for adblocking, Samba for filesharing, Homepage for a homepage (don't you love naming conventions?), and Nextcloud for cloud utilities.
+                        <br><br>
+                        The first thing I set up was <a href="https://docs.portainer.io/start/install/server/docker/linux">portainer</a>, as this would give me a graphical web interface to set everything else up. While you can manage containers via command-line, I decided to use portainer because it would be easier to manage my containers, as I wouldn't have to ssh into my server every single time I wanted to check or change something in a container's config.
+                        <br><br>
+                        Ironically, portainer runs in a docker container itself, so this would be the only one I would have to create through ssh. First was the docker volume to store data:
+
+                        <br><br>
+                        <div class="codeblock"><code>
+                            docker volume create portainer_data <br>
+                        </code></div>
+
+                        <br>
+                        Next was the creation of the actual container. Don't worry, I'll walk through this command with you:
+
+                        <br><br>
+                        <div class="codeblock"><code>
+                            docker run -d -p 8000:8000 -p 9443:9443 --name portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ee:latest
+                        </code></div>
+
+                        <br>
+                        <ul>
+                            <li><b>run</b> - this says that this is a container to be run </li>
+                            <li><b>-d</b> - this means we want to run this container as a "daemon" or "background process". This allows us to still have control of the terminal.</li>
+                            <li><b>-p 8000:8000</b> and <b>-p 9443:9443</b> - this is the port mapping of 8000 to 8000. This means that port 8000 on the container will correspond to port 8000 on the host machine. If you have multiple services like we will have later, this allows you to change the port a container is running on very easily if there were conflicting services.</li>
+                            <li><b>--name</b> - the name of the container.</li>
+                            <li><b>--restart=always</b> - the restart policy of the container. This means that it will always be running, and will always start on boot.</li>
+                            <li><b> -v /var/run/docker.sock:/var/run/docker.sock</b> - this is a "bind" map to /var/run/docker.sock on both the container and host machine, similarly to the pervious port mapping.</li>
+                            <li><b> -v portainer_data:/data</b> - this is a "volume" map from the container's /data directory to the host volume of portainer_data that we created in the pervious command.</li>
+                            <li><b>portainer/portainer-ee:latest</b> - this is the actual image we are downloading and using. It is the latest and most up-to-date version available. </li>
+                        </ul>
+
+                        Once this command has finished running, we can view the container at http://192.168.1.70:8000! Of course you won't see my portainer instance, but if you've followed along and used the same local IP address I have, then you will see your own! 
                         
                         
 
