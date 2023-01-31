@@ -131,7 +131,7 @@
                             I tried to use a ventoy usb to install Ubuntu server, but whenever I tried to boot it would cause a kernel panic and fail, so I instead just flashed the Ubuntu server iso onto a 8gb flash drive I had and installed from that.
                         </blockquote>
 
-                        The installation was very straightforward, as Ubuntu server has a nice TUI installation interface. I debated using encryption, but decided not to in the end as it would interrupt the boot whenever the machine rebooted, and add extra complexity. I don't intend on storing anything particularly sensitive on it, so this is okay. 
+                        The installation was very straightforward, as Ubuntu server has a nice TUI installation interface. I wasn't sure about encrypting the drive at first, and I initally installed the OS without encryption - then I changed my mind and used full-disk luks encryption. The reason behind this was added security, but it came at the cost of needing to manually type in the password on the physical machine whenever it rebooted. I  didn't see this as a huge issue, as the point of a server is to always be running anyways.
 
                         <h5>Inital System Checks</h5>
 
@@ -147,7 +147,7 @@
                         <br>
 
                         <blockquote>
-                            Be careful here, as sometimes Ubuntu will install the <b>snap</b> package version of Docker instead of the <b>apt</b> version. The snap version can cause some errors with portainer.
+                            Be careful here, as sometimes Ubuntu will install the <b>snap</b> package version of Docker instead of the <b>apt</b> version. The snap version can cause some errors with portainer. To me, this is the only issue with Ubuntu. If you need to fix this yourself, you can either download docker via the offical website instructions, or by <a href="https://www.debugpoint.com/remove-snap-ubuntu/">removing snap</a>.
                         </blockquote>
                             
                         <h5>Creating a Static IP</h5>
