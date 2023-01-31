@@ -173,7 +173,7 @@
 
     /* text
      */
-    --color-text       : var(--color-gray-11);
+    --color-text       : var(--color-gray-5);
     --color-text-dark  : var(--color-black);
     --color-text-light : var(--color-gray-7);
     --color-placeholder: var(--color-gray-6);
@@ -195,7 +195,7 @@
 
     /* others
      */
-    --color-white-bg: white;
+    --color-white-bg: #181A1B;
     --color-dark-bg : #1c1d1f;
     --color-border  : var(--color-gray-2);
 }
@@ -397,6 +397,7 @@ abbr[title] {
 
 b, strong {
     font-weight: bolder;
+    color: white !important;
 }
 
 /* 1. Correct the inheritance and scaling of font size in all browsers.
@@ -1639,7 +1640,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     font-family: var(--font-2);
     font-weight: 600;
     font-style: normal;
-    color: var(--color-text-dark);
+    color: white;
     -webkit-font-variant-ligatures: common-ligatures;
     font-variant-ligatures: common-ligatures;
     text-rendering: optimizeLegibility;
@@ -1691,6 +1692,7 @@ h4, .h4 {
 h5, .h5 {
     font-size: var(--text-md);
     line-height: calc(0.875 * var(--space));
+    color: white !important;
 }
 
 h6, .h6 {
@@ -1744,9 +1746,9 @@ small {
 blockquote {
     margin: 0 0 var(--vspace-1) 0;
     padding: var(--vspace-1) var(--vspace-1_5);
-    border-left: 6px solid black;
+    border-left: 6px solid rgb(0, 224, 231);
     position: relative;
-    background-color: #f3f3f3;
+    background-color: #1F2123;
 }
 
 @media screen and (max-width: 400px) {
@@ -1761,7 +1763,7 @@ blockquote p {
     font-weight: 400;
     font-style: normal;
     line-height: var(--vspace-1_25);
-    color: var(--color-text-dark);
+    color: white;
     padding: 0;
 }
 
@@ -2427,7 +2429,6 @@ input::-moz-focus-inner {
 }
 
 
-
 /* =================================================================== 
  * # additional components
  *
@@ -2445,7 +2446,11 @@ input::-moz-focus-inner {
     padding: 0 0.125em 0 0;
     text-transform: uppercase;
     background: transparent;
-    color: var(--color-text-dark);
+    color: white !important;
+}
+
+.drop-cap {
+    color: white;
 }
 
 /* line definition style 
@@ -2522,7 +2527,7 @@ input::-moz-focus-inner {
 
 .pull-quote blockquote p {
     font-weight: 400;
-    color: var(--color-text-dark);
+    color: #AFA89E !important;
 }
 
 .pull-quote blockquote:before {
@@ -4835,7 +4840,7 @@ body.search-is-visible {
     --content-padding-right: 18rem;
     padding-top: calc(6 * var(--space));
     padding-bottom: var(--vspace-4);
-    background-color: white;
+    background-color: #181A1B;
     min-height: 800px;
 }
 
@@ -4926,7 +4931,7 @@ body.search-is-visible {
 .blog-post__date::before, .blog-post__cat::before {
     font-size: calc(var(--text-size) * 0.8333);
     font-weight: 600;
-    color: black;
+    color: white;
     display: block;
 }
 
@@ -5067,7 +5072,7 @@ body.search-is-visible {
     padding: var(--vspace-0_5) var(--vspace-1);
     margin-top: 0;
     margin-bottom: 0;
-    background-color: white;
+    background-color: #181A1B;
     border: 1px solid var(--color-border);
     font-size: var(--text-md);
     -webkit-transform: translateY(-50%);
@@ -5197,7 +5202,7 @@ body.search-is-visible {
     }
     .blog-post__date {
         font-weight: 700;
-        color: black;
+        color: white;
         margin-right: 1.2rem;
         margin-bottom: 0;
     }
