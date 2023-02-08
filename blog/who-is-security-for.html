@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+
+    <!--- basic page needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <title>Who is Security For - Soulsender</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/vendor.css">
+
+    <!-- script
+    ================================================== -->
+    <script src="js/modernizr.js"></script>
+    <script defer src="js/fontawesome/all.min.js"></script>
+
+    <!-- favicons
+    ================================================== -->
+    <link rel="icon" href="../favicon.svg">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+
+</head>
+
+<body id="top">
+
+
+    <!-- preloader
+    ================================================== -->
+    <div id="preloader">
+        <div id="loader"></div>
+    </div>
+
+
+    <!-- header
+    ================================================== -->
+    <header class="s-header s-header--blog">
+        <div class="row">
+
+            <div class="s-header__logo">
+                <a href="../index.html">
+                    
+                </a>
+            </div>
+
+            <nav class="s-header__nav">
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li class="current"><a href="">Blog</a></li>
+                </ul>
+            </nav>
+
+            <a class="s-header__menu-toggle" href="#0" title="Menu">
+                <span class="s-header__menu-icon"></span>
+            </a>
+
+            
+
+        </div> <!-- end row -->
+    </header> <!-- end s-header -->
+
+
+    <!-- blog content
+    ================================================== -->
+    <div class="blog-content">
+
+        <div class="row blog-post-wrap">
+            <div class="column large-12">
+
+                <article class="blog-post">
+
+                    <div class="blog-post__header">
+                        <h1 class="blog-post__title">Who is Security For?</h1>
+                        
+                        <div class="blog-post__meta">
+
+                            <div class="blog-post__date">February 8, 2023</div>
+
+                        </div>
+                    </div> <!-- blog-post__header -->
+
+                    <div class="blog-post__content">
+
+                        <p class="lead drop-cap">
+                            It's a very general question. Security means different things to different people. 
+                        </p>
+
+                        For some, it's the ability to hide data from others. For others, it's ensuring the correct data is received and used. Security is a thing that has existed since the beginning of humanity - but in the last century it has changed into a less-physical thing, and more of a digital thing as bank accounts, confidential documents and notes all turn into bytes on some kind of drive.
+
+                        <br><br>
+
+                        Today, digital security is often as important as physical security; the two are interwoven and you can't have one without the other. There is a saying in hacker communities that goes along the lines of "physical presence to a machine is the worst kind of vulnerability," and this is true - it's much easier to break into a machine by physically connecting to it with an ethernet cable than it is to break into it when it's behind firewalls, input sanitizing, and other defensive mechanisms. But at the same time, to stop people from breaking into those same machines physically, the same systems must be used for things like cameras, sensors, and alerting. 
+
+                        <br><br>
+
+                        Unfortunately, people can frequently be seen disregarding digital security as "not important" because they seem to think it does not directly influence the physical world. Here's an interesting fact however - the biggest money heist ever to have been committed in history wasn't stealing bags of money by breaking into a bank, or by exploiting a very rich person. 
+
+                        <br><br>
+
+                        <b>It was done with cryptocurrency.</b>
+
+                        <br><br>
+
+                        More specifically, it was done by the infamous <a href="https://nenow.in/business/north-korean-hacker-group-lazarus-stole-620-million-cryptocurrency-us.html">North Korean Lazarus group</a> when they stole <b>620 Million Dollars</b>. This shows that it can sometimes have an even bigger impact on the physical world than one might think.
+
+                        <h3>Ok, well what even is a vulnerability?</h3>
+
+                        A huge problem with digital security is that unlike physical security, it is much harder to stop vulnerabilities from being created, due to the very nature of how computers work. A "vulnerability" is a bug in a piece of software, that a hacker might be able to exploit to gain some kind of access. Computers work in a sometimes painfully literal way. They will do exactly what you tell them to, but <i>only</i> exactly what you tell them to do. This leaves gaps where the programmer must account for what the users might input, and how the computer should interact with these inputs.
+
+                        <br><br>
+
+                        Let's take a very common and critical real-world vulnerability as an example - an SQL injection. Basically, SQL injections work as a consequence of a user's input not being "sanitized." 
+                        
+                        <br><br>
+
+                        You know how sometimes if you try and type in characters like "abc" into a box where you are supposed to enter a credit card number, the website will refuse to allow you to use that as a valid input because it wants a number and not letters? This is called "input sanitizing" and works because the website compares what you entered to what the programmer intended you to enter, and if it is wrong, then it will not allow you to submit that value. 
+                        
+                        <br><br>
+                        
+                        SQL injections sort of work the same way. When a user attempts to log in on a website and enter their username and password, the website will query the database on the server it is being hosted on, and ask the database if this user is found. If it is, then the website will allow you to login. If it is not, then it will throw an error, and prevent you from logging in. 
+
+                        <br><br>
+
+                        Now the website will query the database in a way like this:
+
+                        <br><br>
+                        <div class="codeblock"><code>
+                            UserPassword = "password123";
+                            <br><br>
+                            txtUserPassword = getRequestString(UserPassword);<br>
+                            txtSQL = "SELECT * FROM Users WHERE UserPassword = " + txtUserPassword;
+                        </code></div>
+                        <br>
+
+                        In this case, everything in the <b>txtSQL</b> variable is a SQL database query, where the SQL code is in between the "". The website is asking for a <b>UserPassword</b> which it will submit to the database for querying. 
+
+                        <br><br>
+                        <div class="codeblock"><code>
+                            UserPassword = "' OR 1=1 '";
+                            <br><br>
+                            txtUserPassword = getRequestString(UserPassword);<br>
+                            txtSQL = 'SELECT * FROM Users WHERE UserPassword = ' + txtUserPassword;
+                        </code></div>
+                        <br>
+
+                        However, what if we input something that <i>wasn't</i> a password? What if we input ' OR 1=1 '? This statement will actually <b>end</b> the SQL query, and exit out of it, and this gives us the ability to execute any code we want instead of only what the website expects. This can be abused to actually make the database query and return <b>everything</b>, not only our user, but every user password on the website. This works because the database reads the statement as <b>if this password is found, OR if 1 = 1</b>. Of course, one does equal one, and so it evaluates to true, and bypasses the false it would have come to originally.
+
+                        <br><br>
+
+                        So really, a security vulnerability is just logic that hasn't been thought through by the programmer, which can cause an error that can be exploited to break out of a controlled environment. In the case of this example, this SQL injection vulnerability could be remediated by sanitizing the user's input, and only allowing alphanumerical values to be submitted. 
+
+                    </div> <!-- end blog-post__content -->
+
+                </article> <!-- blog post -->
+
+
+    <!-- Java Script
+    ================================================== -->
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/main.js"></script>
+
+</body>
+
+</html>
