@@ -203,12 +203,15 @@
                             HandleSuspendKey=ignore<br>
                             HandleLidSwitch=ignore
                         </code></div>
+                        <br>
+
+                        Then simply reboot.
 
                         <h5>Tailscale VPN</h5>
 
                         I wanted to access my server from outside my home. As it was right now, I would only be able to connect if I was on the LAN (Local Area Network). Generally there are two solutions to this. 
                         <br><br>
-                        The first is port forwarding which involves passing a port through your router to the big bad internet. This is great for something like a website, but not so much for more sensitive things such as filesharing. I didn't want to do this, as anybody would be able to connect and attack my server even with passwords and proper authentication. This left the other option.
+                        The first is port forwarding which involves passing a port through your router to the big bad internet. This is great for something like a website, but not so much for things such as filesharing. I didn't want to do this, as anybody would be able to connect and attack my server even with passwords and proper authentication. This left the other option.
                         <br><br>
                         A VPN (Virtual Private Network) is a remote way to connect to a LAN. I went over VPNs in more detail on my <a href="https://soulsender.me/blog/staying-hidden#vpns">Staying Hidden Guide</a> post.
                         <br><br>
@@ -222,7 +225,9 @@
                         <h3 id="services">Part 2: Services</h3>
 
                         Now that the basics of my server were all setup and ready to go, it was time to start configuring the actual services that I will be using. The ones I decided to use were Portainer for docker containers, Jellyfin for media, MeTube for video downloading, PiHole for adblocking, Samba for filesharing, Homepage for a homepage (don't you love naming conventions?), and Nextcloud for cloud utilities.
-                        <br><br>
+
+                        <h5>Portainer</h5>
+
                         The first thing I set up was <a href="https://docs.portainer.io/start/install/server/docker/linux">portainer</a>, as this would give me a graphical web interface to set everything else up. While you can manage containers via command-line, I decided to use portainer because it would be easier to manage my containers, as I wouldn't have to ssh into my server every single time I wanted to check or change something in a container's config.
                         <br><br>
                         Ironically, portainer runs in a docker container itself, so this would be the only one I would have to create through ssh. First was the docker volume to store data:
@@ -252,9 +257,65 @@
                             <li><b>portainer/portainer-ee:latest</b> - this is the actual image we are downloading and using. It is the latest and most up-to-date version available. </li>
                         </ul>
 
-                        Once this command has finished running, we can view the container at http://192.168.1.70:8000! Of course you won't see my portainer instance, but if you've followed along and used the same local IP address I have, then you will see your own! 
+                        Once this command has finished running, we can view the container at <a href="http://192.168.1.70:8000">http://192.168.1.70:8000</a>! Of course you won't see my portainer instance, but if you've followed along and used the same local IP address and port I have, then you will see your own! 
+
+                        <h5>Jellyfin</h5>
+
+                        Jellyfin is a media server, which basically means that it can stream content such as mp3s and mp4s to your devices, much in the same way Netflix or Spotify works. Instead of downloading the content to the device you are using, you can just stream it from the server!
+                        <br><br>
+                        Now that I had Portainer set up, Jellyfin was even easier to set up because of the Portainer GUI. I am not going to explain exactly how to do the same steps with the CLI, as you can just view the above example with portainer, and change it as you see fit. 
+                        <br><br>
+                        First I set the image docker would pull from. This was the linuxserver/jellyfin:latest image. I then mapped the container ports 7359 and 8096 to their counterparts on the host system, setting 7359 as UDP since it would be used for the actual stream of content, and 8096 as TCP, since it was used for the web interface the user interacts with. 
+                        <br><br>
+                        For the actual content location, I mapped /data/Videos on the container to a bind on /usr/share/jellyfin/videos, and /config to a bind on /etc. All of these volumes were writable by the container.
+                        <br><br>
+                        Finally, I mapped the env variables of PUID=1000, PGID=1000, and TZ to my timezone. I also set the restart policy to "unless stopped".
                         
+                        <h5>Samba</h5>
+
+                        Samba, more commonly called SMB or Server Message Block, is a local filesharing protocol that computers can use to transfer files locally. This is very commonly used in tandem with Active Directory in an office. SMB was also the target of the famous <a href="https://en.wikipedia.org/wiki/EternalBlue">EternalBlue</a> exploit (though newer versions of SMB of course do not have this problem).
+                        <br><br>
+                        I decided to configure SMB on my server, so I could remotely transfer video files to my Jellyfin server. 
+                        <br><br>
+                        To do this, we first install Samba, and then configure it:
+
+                        <br><br>
+                        <div class="codeblock"><code>
+                            sudo apt install samba
+                            sudo nano /etc/samba/smb.conf
+                        </code></div>
+                        <br>
+
+                        my Samba configuration:
+
+                        <br><br>
+                        <div class="codeblock"><code>
+                            [sambashare]
+                                path = /usr/share/jellyfin
+                                read only = no
+                                browsable = yes
+                                ntlm auth = true
+                        </code></div>
+                        <br>
+
+                        then all you had to do was open your file explorer and go to smb://100.75.245.84. Make sure to allow Samba through your firewall if you are using one like ufw.
+
+                        <br><br>
+                        <div class="codeblock"><code>
+                            sudo ufw allow samba
+                        </code></div>
+                        <br>
+
+                        <h5>Homepage</h5>
+
+                        Homepage is a simple application that will host a customized dashboard of your various services running on your server. All it requires is a couple yaml configuration changes which are really easy to make. 
+                        <br><br>
+
+                        <i>My server homepage</i>
+                        <img src="../images/home-server/homepage.png">
                         
+
+
 
 
                     </div> <!-- end blog-post__content -->
