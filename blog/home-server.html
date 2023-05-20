@@ -104,12 +104,17 @@
                             <ul>
                                 <li><a class="smoothscroll" href="#server">Wait, A Server?</a></li>
                                 <li><a class="smoothscroll" href="#ubuntu">Step 1: Installing and Configuring Ubuntu Sever</a></li>
+                                    <ul><li><a class="smoothscroll" href="#syschecks">Inital System Checks</a></li></ul>
+                                    <ul><li><a class="smoothscroll" href="#addressing">Creating a Static IP</a></li></ul>
+                                    <ul><li><a class="smoothscroll" href="#laptop">Laptop Server Tricks</a></li></ul>
+                                    <ul><li><a class="smoothscroll" href="#tailscale">Tailscale Mesh VPN</a></li></ul>
                                 <li><a class="smoothscroll" href="#services">Step 2: Services</a>
                                     <ul><li><a class="smoothscroll" href="#portainer">Portainer Docker Container Manager</a></li></ul>
                                     <ul><li><a class="smoothscroll" href="#jellyfin">Jellyfin Media Server</a></li></ul>
                                     <ul><li><a class="smoothscroll" href="#samba">Samba Filesharing</a></li></ul>
                                     <ul><li><a class="smoothscroll" href="#homepage">Server Homepage</a></li></ul>
-                                </li>
+                                    <ul><li><a class="smoothscroll" href="#minecraft">Minecraft Server</a></li></ul></li>
+                                <!-- <li><a class="smoothscroll" href="#services">Step 3: Scripting</a></li> -->
                             </ul>
                         </nav>
 
@@ -121,9 +126,9 @@
 
                         In my case, I chose <a href="https://ubuntu.com/download/server">Ubuntu server 22.04</a>. I chose it because it is relatively lightweight, easy to setup, and includes drivers for many things on the device. I considered Proxmox as well, but decided to stick with Ubuntu server which I will set up to use <a href="https://www.portainer.io/">Portainer</a> - a web GUI for managing docker containers.
 
-                        <br><br>
+                        <h5>Hardware</h5>
 
-                        The device I am using is a old Dell Inspirion that my friend graciously gave to me. The screen is falling apart and you can see the exposed wiring and behind the screen which is a little iffy. Fortunately, it works great for our use case, as I will not really be using the display for anything aside from the installation of Ubuntu server. The laptop itself has 8gb of RAM and a 256gb SSD, as well as an ethernet port which is great, and not something you find often on laptops much anymore.
+                        The device I am using is a old Dell Inspirion that my friend graciously gave to me. The screen is falling apart and you can see the exposed wiring and behind the screen which is a little iffy. One of the corners is all smashed up as well. Fortunately, it works great for our use case, as I will not really be using the display for anything aside from the installation of Ubuntu server. The laptop itself has 8gb of RAM, an Intel i3-8145U (2 cores, 4 threads) and a 256gb SSD, as well as an ethernet port which is great, and not something you find often on laptops much anymore.
 
                         <h3 id="ubuntu">Step 1: Installing Ubuntu server</h3>
 
@@ -138,7 +143,7 @@
 
                         The installation was very straightforward, as Ubuntu server has a nice TUI installation interface. I wasn't sure about encrypting the drive at first, and I initally installed the OS without encryption - then I changed my mind and used full-disk luks encryption. The reason behind this was added security, but it came at the cost of needing to manually type in the password on the physical machine whenever it rebooted. I  didn't see this as a huge issue, as the point of a server is to always be running anyways.
 
-                        <h5>Inital System Checks</h5>
+                        <h5 id="syschecks">Inital System Checks</h5>
 
                         Once the installation had finished, the machine booted to the very-friendly tty prompt. I updated and upgraded the system, installed docker (and neofetch of course) and checked my local IP address I had been assigned my my router.
                         <br><br>
@@ -155,7 +160,7 @@
                             Be careful here, as sometimes Ubuntu will install the <b>snap</b> package version of Docker instead of the <b>apt</b> version. The snap version can cause some errors with portainer. To me, this is the only issue with Ubuntu. If you need to fix this yourself, you can either download docker via the offical website instructions, or by <a href="https://www.debugpoint.com/remove-snap-ubuntu/">removing snap</a>.
                         </blockquote>
                             
-                        <h5>Creating a Static IP</h5>
+                        <h5 id="addressing">Creating a Static IP</h5>
 
                         I also had to configure the device to use a static IP that would not change. This would make it easier to isolate it on my network. To do this, you must edit the config file
 
@@ -191,7 +196,7 @@
                             <li><b>dhcp4</b> - this just tells the system that we do not want to use DHCP to obtain our local IP address, but rather use the one we've already specified.</li>
                         </ul>
 
-                        <h5>Laptop Tricks</h5>
+                        <h5 id="laptop">Laptop Tricks</h5>
 
                         Because this was a laptop, I would like to be able to close the screen and not have to worry about it shutting down. Thanks to <a href="https://www.youtube.com/watch?v=HxvFuGnjoJo&t=1013s">TechHut</a> for this. This is very easy to do, and only requires a configuration change in
 
@@ -302,10 +307,12 @@
                         For the actual content location, I mapped /data/Videos on the container to a bind on /usr/share/jellyfin/videos, and /config to a bind on /etc. All of these volumes were writable by the container.
                         <br><br>
                         Finally, I mapped the env variables of PUID=1000, PGID=1000, and TZ to my timezone. I also set the restart policy to "unless stopped".
+                        <br><br>
+                        Keep in mind that if you have any kind of GPU in your server, you can also do some nice video transcoding. 
                         
                         <h5 id="samba">Samba</h5>
 
-                        Samba, more commonly called SMB or Server Message Block, is a local filesharing protocol that computers can use to transfer files locally. This is very commonly used in tandem with Active Directory in an office. SMB was also the target of the famous <a href="https://en.wikipedia.org/wiki/EternalBlue">EternalBlue</a> exploit (though newer versions of SMB of course do not have this problem).
+                        Samba, an interation of the SMB or Server Message Block, is a local filesharing protocol that computers can use to transfer files locally. This is very commonly used in tandem with Active Directory in an office. SMB was also the target of the famous <a href="https://en.wikipedia.org/wiki/EternalBlue">EternalBlue</a> exploit (though newer versions of SMB of course do not have this problem).
                         <br><br>
                         I decided to configure SMB on my server, so I could remotely transfer video files to my Jellyfin server. 
                         <br><br>
@@ -322,10 +329,10 @@
 
                         <br><br>
                         <div class="codeblock"><code>
-                            [sambashare]
-                                path = /usr/share/jellyfin
-                                read only = no
-                                browsable = yes
+                            [sambashare]<br>
+                                path = /usr/share/jellyfin<br>
+                                read only = no<br>
+                                browsable = yes<br>
                                 ntlm auth = true
                         </code></div>
                         <br>
@@ -338,15 +345,36 @@
                         </code></div>
                         <br>
 
-                        <h5>Homepage</h5>
+                        <h5 id="homepage">Homepage</h5>
 
-                        Homepage is a simple application that will host a customized dashboard of your various services running on your server. All it requires is a couple yaml configuration changes which are really easy to make. 
+                        <a href="https://gethomepage.dev/en/installation/">Homepage</a> (very creatively named btw) is a simple application that will host a customized dashboard of your various services running on your server. As with anything else in this build, I put it in a docker container. All it requires is a couple yaml configuration changes which are really easy to make. 
                         <br><br>
 
                         <i>My server homepage</i>
                         <img src="../images/home-server/homepage.png">
 
-                        I'm not going to go over all my configurations for this because there are a lot, and they are really easy to do, but you can view my config files <a href="https://github.com/Soulsender/server-configs/tree/main/homepage">here</a>
+                        I'm not going to go over all my configurations for this because there are a lot, and they are really easy to do, but you can view my config files <a href="https://github.com/Soulsender/server-configs/tree/main/homepage">here</a>.
+
+                        <h5 id="minecraft">Minecraft Server</h5>
+
+                        I decided to set up a minecraft server for my friends and I to use. Minecraft servers are actually relatively lightweight, and this little server handles it great. I was going to use a docker container for it (big suprise) and to do this I used <a href="https://github.com/itzg/docker-minecraft-server">itzg</a>'s version. They have a <a href="https://github.com/itzg/docker-minecraft-server/blob/master/docker-compose.yml">docker-compose</a> file with basically the same configuration I have, although mine has a couple tweaks. 
+                        <br><br>
+                        I thought it would be fun to add a custom texture pack I made which replaces some of the game textures and sounds with custom ones. To do this, I just had to add the following lines as env variables:
+
+                        <br><br>
+                        <div class="codeblock"><code>
+                            RESOURCE_PACK=https://soulsender.me/texturepack.zip <br>
+                            RESOURCE_PACK_ENFORCE=TRUE<br>
+                            RESOURCE_PACK_SHA1=1234567890abcdefghijklmnopqrf
+                        </code></div>
+                        <br>
+
+                        This would link my texture pack, check it wasn't corrupted with the hash, and force all players on the server to use that texture pack.
+                        <br><br>
+
+                        <blockquote>
+                            If you are doing this yourself, make sure to set the "EULA" env variable to "TRUE" otherwise the server will not launch.
+                        </blockquote>
                         
 
 
