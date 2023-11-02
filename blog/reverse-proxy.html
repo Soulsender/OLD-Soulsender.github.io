@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+
+    <!--- basic page needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <title>Home Server - Soulsender</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/vendor.css">
+
+    <!-- script
+    ================================================== -->
+    <script src="js/modernizr.js"></script>
+    <script defer src="js/fontawesome/all.min.js"></script>
+
+    <!-- favicons
+    ================================================== -->
+    <link rel="icon" href="../favicon.svg">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+
+</head>
+
+<body id="top">
+
+
+    <!-- preloader
+    ================================================== -->
+    <div id="preloader">
+        <div id="loader"></div>
+    </div>
+
+
+    <!-- header
+    ================================================== -->
+    <header class="s-header s-header--blog">
+        <div class="row">
+
+            <div class="s-header__logo">
+                <a href="../index.html">
+                    
+                </a>
+            </div>
+
+            <nav class="s-header__nav">
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li class="current"><a href="">Blog</a></li>
+                </ul>
+            </nav>
+
+            <a class="s-header__menu-toggle" href="#0" title="Menu">
+                <span class="s-header__menu-icon"></span>
+            </a>
+
+            
+
+        </div> <!-- end row -->
+    </header> <!-- end s-header -->
+
+
+    <!-- blog content
+    ================================================== -->
+    <div class="blog-content">
+
+        <div class="row blog-post-wrap">
+            <div class="column large-12">
+
+                <article class="blog-post">
+
+                    <div class="blog-post__header">
+                        <h1 class="blog-post__title">Reverse Proxying a Home Server</h1>
+                        
+                        <div class="blog-post__meta">
+
+                            <div class="blog-post__date">Dec 12, 2022</div>
+
+                        </div>
+                    </div> <!-- blog-post__header -->
+
+                    <div class="blog-post__content">
+
+                        <p class="lead drop-cap">
+                            Let Me Paint You a Picture.
+                        </p>
+
+                        You have some kind of service running in your homelab. Maybe it's a website, maybe it's some kind of file sharing application, maybe it's a minecraft server. Whatever the case, it's something you'd like to share with other people. To do this, you have a couple different options.
+                        <br><br>
+                        You could give people <b>access via VPN?</b> But that is hard to manage and is insecure since people can access anything on your network. Even with something like <a href="tailscale.com">Tailscale</a> and ACLs, it can be cumbersome for users to install an entirely different application just to use something of yours.
+                        <br><br>
+                        Okay, well maybe you could <b>host it all in the cloud?</b> But hosting everything in the cloud can get really expensive, and it is more fun to host on your own premises. 
+                        <br><br>
+                        Fine... well maybe you could <b>port forward that service?</b> But this means that you need to give users your IP address, which some people might not want to do since it can be <i>roughly</i> tracked to your location. Plus, it could make you suseptible to DDoS attacks.
+                        
+                        <h3>But What About a Reverse-Proxy?</h3>
+
+                        A reverse proxy can help mitigate some of those concerns. Basically how it works is that rather than connecting to the server you're trying to reach, you connect to a different server that forwards traffic between your client and the server.
+                        <br><br>
+                        Now I sort of lied earlier when I said that a reverse proxy fixes all the problems of hosting a service through NAT. You will still actually need a way for that reverse proxy to connect to the server on your premise. But don't worry! There is still a solution. Remember earlier when I mentioned giving users access to your service with a VPN? With this solution, you don't need the clients to have VPN access set up, you can just tunnel the traffic from the reverse proxy to the server, rather than from the client to the server.
+                        <br><br>
+                        In my case, I added my reverse proxy to my Tailscale tailnet and installed the tailscale client on it. Then I used <a href="https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/">Nginx</a> as the actual reverse proxy software. I did this by renting a very cheap linux cloud VM to get a public IP.
+                        <br><br>
+                        <blockquote>you need a reminder on what Tailscale is and how I use it, be sure to check out <a href="https://soulsender.me/blog/home-server#tailscale">this post</a> where I go into much more detail.</blockquote> 
+                        
+                        <h3>Setting Up Nginx</h3>
+                        Setting up Nginx is actually very easy. All you need to do is create a configuration file in /etc/nginx/sites-available and then create a symbolic link to /etc/nginx/sites-enabled. I'll link mine below.
+                        <br><br>
+                        Make sure that the Nginx daemon is enabled on startup and is running, and then you can generate a SSL certificate to get HTTPS on that subdomain using certbot. Make sure you add an A Record to your DNS settings that sets "subdomain" to the IP of your reverse proxy server.
+
+                        <br><br><div class="codeblock">
+                            <code>sudo apt install certbot python3-certbot-nginx</code><br>
+                            <code>sudo certbot --nginx -d subdomain.soulsender.me</code>
+                        </div>
+                        
+                        <br>
+                        The final configuration file for nginx basically looks like <a href="../external/nginx-config.conf">this</a>. 
+
+                        <br><br>
+                        And there you go! Easy and secure routing to a service running on your home network.
+
+                    </div> <!-- end blog-post__content -->
+
+                </article> <!-- blog post -->
+
+                 <!-- footer
+    ================================================== -->
+    <footer>
+        <div class="row">
+            
+
+            <div class="column large-7 medium-6 w-1000-stack ss-copyright">
+                <span>© Copyright Kreative 2020</span> 
+                <span>Design by <a href="https://www.styleshout.com/">StyleShout</a></span>
+<!--                 <span>le pomplemousse</span> -->
+                <span>Contact me at <a href="mailto:soul@soulsender.me">soul@soulsender.me</a></span>
+                <span><a href="../soulsender_publickey.pgp">Public PGP Key</a></span>
+                
+            </div>
+        </div>
+
+        <div class="ss-go-top">
+            <a class="smoothscroll" title="Back to Top" href="#top">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 4h12v2H6zm5 10v6h2v-6h5l-6-6-6 6z"/></svg>
+            </a>
+        </div> <!-- end ss-go-top -->
+    </footer>
+
+
+    <!-- Java Script
+    ================================================== -->
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/main.js"></script>
+
+</body>
+
+</html>
