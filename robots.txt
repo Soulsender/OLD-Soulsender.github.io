@@ -190,4 +190,4 @@ User-agent: Xenu's Link Sleuth 1.1c
 User-agent: Zeus
 User-agent: Zeus 32297 Webster Pro V2.9 Win32
 User-agent: Zeus Link Scout
-Disallow: /
+Disallow:
