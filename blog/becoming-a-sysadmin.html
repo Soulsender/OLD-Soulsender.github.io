@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+
+    <!--- basic page needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <title>Becoming a Sysadmin - Soulsender</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/vendor.css">
+
+    <!-- script
+    ================================================== -->
+    <script src="js/modernizr.js"></script>
+    <script defer src="js/fontawesome/all.min.js"></script>
+
+    <!-- favicons
+    ================================================== -->
+    <link rel="icon" href="../favicon.svg">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+
+</head>
+
+<body id="top">
+
+
+    <!-- preloader
+    ================================================== -->
+    <div id="preloader">
+        <div id="loader"></div>
+    </div>
+
+
+    <!-- header
+    ================================================== -->
+    <header class="s-header s-header--blog">
+        <div class="row">
+
+            <div class="s-header__logo">
+                <a href="../index.html">
+                    
+                </a>
+            </div>
+
+            <nav class="s-header__nav">
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li class="current"><a href="">Blog</a></li>
+                </ul>
+            </nav>
+
+            <a class="s-header__menu-toggle" href="#0" title="Menu">
+                <span class="s-header__menu-icon"></span>
+            </a>
+
+            
+
+        </div> <!-- end row -->
+    </header> <!-- end s-header -->
+
+
+    <!-- blog content
+    ================================================== -->
+    <div class="blog-content">
+
+        <div class="row blog-post-wrap">
+            <div class="column large-12">
+
+                <article class="blog-post">
+
+                    <div class="blog-post__header">
+                        <h1 class="blog-post__title">Becoming a System Admin</h1>
+                        
+                        <div class="blog-post__meta">
+
+                            <div class="blog-post__date">Jan 2, 2024</div>
+
+                        </div>
+                    </div> <!-- blog-post__header -->
+
+                    <div class="blog-post__content">
+
+                        <p class="lead drop-cap">
+                            Behind every digital service is a system admin. 
+                        </p>
+
+                        There might even be more than once, depending on the scale - but every service has one. They are the people who ensure that a service is always working when you need it. Here's my story of how I came to become my own system admin for my own server.
+                        <br><br>
+                        If you haven't read my other post about my server, you might be missing some context, but the TL;DR of it is that I run my own server in my home that I maintain. This server runs many different services, mostly for my own personal use, but it also runs a Minecraft game server for my friends and I. This is where we can all connect and play together at the same time.
+                        <br><br>
+                        But here's the thing: this server needs to be running all the time. It must host the code that runs the Minecraft game server, so that anyone can decide to join and play, even if the owner (myself) is not online.
+                        <br><br>
+                        Now it's not as simple as starting the game server and walking away. You have to ensure a couple different things.
+
+                        <h3>Uptime</h3>
+                        Uptime is basically how long something is online before it goes down. The objective here is basically to make sure that the service never goes down (at least - that's what the clients believe). Realistically, you can not have something online forever. It will sometimes need to be taken down for updates or patches. This is why you need to make these updates as least disturbing to the clients as possible.
+                        <br><br>
+                        This is one of the reasons why companies use Linux for a lot of their server infrastructure. Rarely must the server actually be restarted after applying updates - unlike windows.
+
+                        <h3>Security</h3>
+                        Another factor when running any kind of service, is security. You need to protect user information, as well as access to your server. You don't want just anyone being able to use your services.
+
+                        <h3>Ok So?</h3>
+                        So how does any of this relate to a Minecraft game server? Well, just like any other service like a website or file sharing platform, there can be issues and bugs arise. Here are a couple that I ran into.
+                        
+                        <h3>The First Issue</h3>
+                        One time, a user reported the game server running poorly. This user would go somewhere in-game, and then be teleported back to where they were a few seconds ago. This is a relatively common issue on any online game, as has been given the name "rubber banding" due to how you are moved between two in-game locations due to the server and the client reporting different locations for where the player is.
+                        <br><br>
+                        There are a couple different causes for this, the most common being an unstable network connection. However, this user reported that their network connection was fine. Another cause was that the server itself was running out of resources. Using a server-side mod called <a href="https://www.curseforge.com/minecraft/mc-mods/spark">Spark</a>, I was able to run a test where I found that the server's resources were being used in this one specific place in-game, where there were too many hostile monsters, and the server could not keep up with rendering them all at once.
+                        <br><br>
+                        Once I had removed them all, everything went back to normal and the issue went away.
+                        
+                        
+
+
+                        
+
+                    </div> <!-- end blog-post__content -->
+
+                </article> <!-- blog post -->
+
+                 <!-- footer
+    ================================================== -->
+    <footer>
+        <div class="row">
+            
+
+            <div class="column large-7 medium-6 w-1000-stack ss-copyright">
+                <span>© Copyright Kreative 2020</span> 
+                <span>Design by <a href="https://www.styleshout.com/">StyleShout</a></span>
+<!--                 <span>le pomplemousse</span> -->
+                <span>Contact me at <a href="mailto:soul@soulsender.me">soul@soulsender.me</a></span>
+                <span><a href="../soulsender_publickey.pgp">Public PGP Key</a></span>
+                
+            </div>
+        </div>
+
+        <div class="ss-go-top">
+            <a class="smoothscroll" title="Back to Top" href="#top">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 4h12v2H6zm5 10v6h2v-6h5l-6-6-6 6z"/></svg>
+            </a>
+        </div> <!-- end ss-go-top -->
+    </footer>
+
+
+    <!-- Java Script
+    ================================================== -->
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/main.js"></script>
+
+</body>
+
+</html>
