@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+
+    <!--- basic page needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <title>Hosting Content in VRChat - Soulsender</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/vendor.css">
+
+    <!-- script
+    ================================================== -->
+    <script src="js/modernizr.js"></script>
+    <script defer src="js/fontawesome/all.min.js"></script>
+
+    <!-- favicons
+    ================================================== -->
+    <link rel="icon" href="../favicon.svg">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+
+</head>
+
+<body id="top">
+
+
+    <!-- preloader
+    ================================================== -->
+    <div id="preloader">
+        <div id="loader"></div>
+    </div>
+
+
+    <!-- header
+    ================================================== -->
+    <header class="s-header s-header--blog">
+        <div class="row">
+
+            <div class="s-header__logo">
+                <a href="../index.html">
+                    
+                </a>
+            </div>
+
+            <nav class="s-header__nav">
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li class="current"><a href="">Blog</a></li>
+                </ul>
+            </nav>
+
+            <a class="s-header__menu-toggle" href="#0" title="Menu">
+                <span class="s-header__menu-icon"></span>
+            </a>
+
+            
+
+        </div> <!-- end row -->
+    </header> <!-- end s-header -->
+
+
+    <!-- blog content
+    ================================================== -->
+    <div class="blog-content">
+
+        <div class="row blog-post-wrap">
+            <div class="column large-12">
+
+                <article class="blog-post">
+
+                    <div class="blog-post__header">
+                        <h1 class="blog-post__title">Hosting Content in VRChat</h1>
+                        
+                        <div class="blog-post__meta">
+
+                            <div class="blog-post__date">Aug 2, 2024</div>
+
+                        </div>
+                    </div> <!-- blog-post__header -->
+
+                    <div class="blog-post__content">
+
+                        <p class="lead drop-cap">
+                            VR is fun. 
+                        </p>
+
+                        It's a technology that can be more immersive to users and can help bridge the gap between the physical and virtual world. Using it, you can have more immersive experiences with other users than previously possible. What better way to use this tech than to watch something like a movie with your friend?
+
+                        <h3>What Some Smart People Have Done</h3>
+
+                        There is a social VR "game" called VRChat, and in it you can do many different things with your friends. It uses the Unity game engine, and similar to a platform like Roblox, users can create and upload their own content using a version of the C# programming language called Udon.
+                        <br><br>
+                        Now some smarter people than me have figured out how to program media players into the game. These can stream Youtube and Twitch links, but also <b>media files</b> like mp4s and mkvs, straight from a server hosting them. Now you can imagine if you have some <i>definitely legally obtained media files of movies you definitely own</i>, you could stream them for your friends and yourself to watch in VR! Well I'm going to tell you exactly how to do that in this blog post.
+
+                        <h3>What You're Going to Need</h3>
+
+                        Now it's not as simple as hosting a web server and accessing your media files. <b>VRChat prevents unencrypted HTTP requests for security reasons</b>, so you're going to need both a domain and a SSL/TLS cert for that domain. I used a small digitalocean cloud VPS for my hosting. The web server I used was Nginx, just because I had it previously setup as a reverse proxy, and it already had HTTPS set up using Let's Encrypt and <a href="https://github.com/certbot/certbot">certbot</a>. There are plenty of tutorials on how to do this, but in brief: 
+                        
+                        <ul>
+                            <li>Link your domain name to your webserver's public IP using an <a href="https://www.cloudflare.com/learning/dns/dns-records/dns-a-record/">A Record</a>. You can use either the root of the domain, or a subdomain. In my case I used <b>server.soulsender.me</b>.</li>
+                            <li>Generate an HTTPS cert, either manually, or with <a href="https://github.com/certbot/certbot">certbot</a>.</li>
+                            <li>Configure your webserver of choice to serve the directory of media files you have. In my case, using Nginx you turn <b>autoindex on</b>. Here's my <a href="https://gist.github.com/Soulsender/34783750b97ade0f760d431048cdd7f3">example Nginx configuration file</a>. You can't just copy and paste the config, you need to generate the HTTPS keys.</li>
+                            <li>Upload your media files to your server if needed, using a tool like scp.</li>
+                            <li>Now you should be able to get a HTTPS direct link to your media files like <b>https://server.soulsender.me/example.mp4</b></li>
+                        </ul>
+
+                        <h3>Things You Need to Know</h3>
+
+                        Now that's all you need to setup, but there are a couple additional things you need to know so you don't have to go through the same pain I did while troubleshooting.
+
+                        <ul>
+                            <li><b>Enable "untrusted links"in your VRChat settings</b>. This basically allows the game to contact any domain and not just the ones whitelisted by the developers.</li>
+                            <li><b>Check what audio codec your media is using</b>. I used VLC for this, under Tools > Codec Information. Stream 0 will be your video codec, and any streams after that will be your audio codecs. This won't be as much of a problem for newer media, but if you have older media files, and the sound ingame sounds too quiet or off, then convert your audio codec to stereo. You can use a tool like <a href="https://www.ffmpeg.org/">ffmpeg</a> to do this with a command like:
+                                <br>
+                                <div class="codeblock"><code>ffmpeg -i input.mkv -c:v copy -c:a aac -ac 2 output.mkv</code></div>
+                            </li>
+                            <li>Sometimes using the "video" option on ingame media players would <b>not stream audio</b>, so you can use the "live" option instead. This doesn't seem to work any differently, as you can still pause the stream.</li>
+                        </ul>
+
+                        Have fun!
+                        
+                        
+                        
+                        
+
+
+                        
+
+                    </div> <!-- end blog-post__content -->
+
+                </article> <!-- blog post -->
+
+                 <!-- footer
+    ================================================== -->
+    <footer>
+        <div class="row">
+            
+
+            <div class="column large-7 medium-6 w-1000-stack ss-copyright">
+                <span>© Copyright Kreative 2020</span> 
+                <span>Design by <a href="https://www.styleshout.com/">StyleShout</a></span>
+<!--                 <span>le pomplemousse</span> -->
+                <span>Contact me at <a href="mailto:soul@soulsender.me">soul@soulsender.me</a></span>
+                <span><a href="../soulsender_publickey.pgp">Public PGP Key</a></span>
+                
+            </div>
+        </div>
+
+        <div class="ss-go-top">
+            <a class="smoothscroll" title="Back to Top" href="#top">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 4h12v2H6zm5 10v6h2v-6h5l-6-6-6 6z"/></svg>
+            </a>
+        </div> <!-- end ss-go-top -->
+    </footer>
+
+
+    <!-- Java Script
+    ================================================== -->
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/main.js"></script>
+
+</body>
+
+</html>
